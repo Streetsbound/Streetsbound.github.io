@@ -39,46 +39,45 @@ const loadingLines = [
 ];
 
 let lineIndex = 0;
-const maxVisibleLines = 4; // Only show 4 lines at a time
+const maxVisibleLines = 4;
 
 function updateTerminal() {
-    if (lineIndex < loadingLines.length) {
-        // Add new line and trim old lines
-        loadingScreen.textContent = [
-            ...loadingScreen.textContent.split('\n').slice(-maxVisibleLines),
-            loadingLines[lineIndex]
-        ].join('\n');
+  if (lineIndex < loadingLines.length) {
+    // Add new line and trim old lines
+    loadingScreen.textContent = [
+      ...loadingScreen.textContent.split('\n').slice(-maxVisibleLines),
+      loadingLines[lineIndex]
+    ].join('\n');
 
-        lineIndex++;
-        loadingScreen.scrollTop = loadingScreen.scrollHeight; // Auto-scroll
+    lineIndex++;
+    loadingScreen.scrollTop = loadingScreen.scrollHeight;
 
-        // Slow down for final section
-        const delay = lineIndex > 25 ? 1000 : 500;
-        setTimeout(updateTerminal, delay);
-    } else {
-        // Show glitch screen
-        loadingScreen.classList.add('hidden');
-        glitchScreen.classList.remove('hidden');
-        
-        // After 3 seconds, show prompt
-        setTimeout(() => {
-            glitchScreen.classList.add('hidden');
-            promptScreen.classList.remove('hidden');
-            setupPrompt(); // Initialize keyboard input
-        }, 3000);
-    }
+    const delay = lineIndex > 25 ? 1000 : 500;
+    setTimeout(updateTerminal, delay);
+  } else {
+    // Hide loading, show glitch
+    loadingScreen.classList.add('hidden');
+    glitchScreen.classList.remove('hidden');
+    
+    // After 3 seconds, hide glitch and show prompt
+    setTimeout(() => {
+      glitchScreen.classList.add('hidden');
+      promptScreen.classList.remove('hidden');
+      setupPrompt();
+    }, 3000);
+  }
 }
 
 function setupPrompt() {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'y' || e.key === 'Y') {
-            promptScreen.classList.add('hidden');
-            bbsContent.classList.remove('hidden');
-        } else if (e.key === 'n' || e.key === 'N') {
-            promptScreen.innerHTML += '\n>_ Disconnecting...';
-            setTimeout(() => window.close(), 1000);
-        }
-    });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'y' || e.key === 'Y') {
+      promptScreen.classList.add('hidden');
+      bbsContent.classList.remove('hidden'); // Show BBS content
+    } else if (e.key === 'n' || e.key === 'N') {
+      promptScreen.innerHTML += '\n>_ Disconnecting...';
+      setTimeout(() => window.close(), 1000);
+    }
+  });
 }
 
 // Start the sequence
