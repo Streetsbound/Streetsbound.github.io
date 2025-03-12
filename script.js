@@ -43,7 +43,6 @@ const maxVisibleLines = 4;
 
 function updateTerminal() {
   if (lineIndex < loadingLines.length) {
-    // Add new line and trim old lines
     loadingScreen.textContent = [
       ...loadingScreen.textContent.split('\n').slice(-maxVisibleLines),
       loadingLines[lineIndex]
@@ -55,20 +54,17 @@ function updateTerminal() {
     const delay = lineIndex > 25 ? 1000 : 500;
     setTimeout(updateTerminal, delay);
   } else {
-    // Hide loading, show glitch
     loadingScreen.classList.add('hidden');
     glitchScreen.classList.remove('hidden');
     
-    // After 3 seconds, hide glitch and show prompt
     setTimeout(() => {
       glitchScreen.classList.add('hidden');
       promptScreen.classList.remove('hidden');
-      setupPrompt();
+      setupPrompt(); // Initialize prompt typing
     }, 3000);
   }
 }
 
-// In script.js
 function setupPrompt() {
   const promptLines = [
     ">_ . . .",
@@ -79,59 +75,57 @@ function setupPrompt() {
     ">_ Do you want 異 to see just 唄茨 how DEEP the RaBbit hOle Goes?"
   ];
 
-  const optionsText = "[Y]es / [N]o";
-  let currentLine = 0;
   const promptText = document.getElementById('prompt-text');
+  let currentLine = 0;
 
   function typePrompt() {
     if (currentLine < promptLines.length) {
       promptText.textContent += promptLines[currentLine] + '\n';
       currentLine++;
-      setTimeout(typePrompt, 500); // Typing speed
+      setTimeout(typePrompt, 500);
     } else {
-      // Add options after last line
-      promptText.textContent += '\n' + optionsText;
+      promptText.textContent += '\n[Y]es / [N]o';
       setupInputHandler();
     }
   }
 
-  function setupInputHandler() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'y' || e.key === 'Y') {
-        promptScreen.classList.add('hidden');
-        bbsContent.classList.remove('hidden');
-      } else if (e.key === 'n' || e.key === 'N') {
-        promptText.textContent += '\n\n>_ ';
-        typeRedirectMessage();
-      }
-    });
-  }
-
-  function typeRedirectMessage() {
-    const glitchMessage = "S0RrY, CHUMMerS 0nlyy. . . SEnD1ng YOu sOm3wHEr3 >TREND< f0r C0rps";
-    let charIndex = 0;
-    
-    function typeGlitch() {
-      if (charIndex < glitchMessage.length) {
-        promptText.textContent += glitchMessage[charIndex];
-        charIndex++;
-        setTimeout(typeGlitch, 50); // Faster typing for glitch message
-      } else {
-        setTimeout(() => {
-          window.location.href = "https://www.dndbeyond.com"; // Redirect to D&D Beyond
-        }, 2000);
-      }
-    }
-    
-    typeGlitch();
-  }
-
-  // Start typing prompt
+  // Start fresh
   promptText.textContent = '';
   typePrompt();
 }
+
+function setupInputHandler() {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'y' || e.key === 'Y') {
+      promptScreen.classList.add('hidden');
+      bbsContent.classList.remove('hidden');
+    } else if (e.key === 'n' || e.key === 'N') {
+      const promptText = document.getElementById('prompt-text');
+      promptText.textContent += '\n\n>_ ';
+      typeRedirectMessage();
+    }
   });
 }
 
-// Start the sequence here
+function typeRedirectMessage() {
+  const glitchMessage = "S0RrY, CHUMMerS 0nlyy. . . S3nding Y0u s0m3wh3r3 TR3NDY f0r C0rps";
+  const promptText = document.getElementById('prompt-text');
+  let charIndex = 0;
+
+  function typeGlitch() {
+    if (charIndex < glitchMessage.length) {
+      promptText.textContent += glitchMessage[charIndex];
+      charIndex++;
+      setTimeout(typeGlitch, 50);
+    } else {
+      setTimeout(() => {
+        window.location.href = "https://www.dndbeyond.com";
+      }, 2000);
+    }
+  }
+
+  typeGlitch();
+}
+
+// Start the sequence
 updateTerminal();
