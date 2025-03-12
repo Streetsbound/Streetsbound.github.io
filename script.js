@@ -68,15 +68,68 @@ function updateTerminal() {
   }
 }
 
+// In script.js
 function setupPrompt() {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'y' || e.key === 'Y') {
-      promptScreen.classList.add('hidden');
-      bbsContent.classList.remove('hidden'); // Show BBS content
-    } else if (e.key === 'n' || e.key === 'N') {
-      promptScreen.innerHTML += '\n>_ Disconnecting...';
-      setTimeout(() => window.close(), 1000);
+  const promptLines = [
+    ">_ . . .",
+    ">_ . . .",
+    ">_ . . .",
+    ">_ . . . .",
+    ">_ Hello ィヤね there ChUMmeRs",
+    ">_ Do you want 異 to see just 唄茨 how DEEP the RaBbit hOle Goes?"
+  ];
+
+  const optionsText = "[Y]es / [N]o";
+  let currentLine = 0;
+  const promptText = document.getElementById('prompt-text');
+
+  function typePrompt() {
+    if (currentLine < promptLines.length) {
+      promptText.textContent += promptLines[currentLine] + '\n';
+      currentLine++;
+      setTimeout(typePrompt, 500); // Typing speed
+    } else {
+      // Add options after last line
+      promptText.textContent += '\n' + optionsText;
+      setupInputHandler();
     }
+  }
+
+  function setupInputHandler() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'y' || e.key === 'Y') {
+        promptScreen.classList.add('hidden');
+        bbsContent.classList.remove('hidden');
+      } else if (e.key === 'n' || e.key === 'N') {
+        promptText.textContent += '\n\n>_ ';
+        typeRedirectMessage();
+      }
+    });
+  }
+
+  function typeRedirectMessage() {
+    const glitchMessage = "S0RrY, CHUMMerS 0nlyy. . . S3nding Y0u s0m3wh3r3 TR3NDY f0r C0rps";
+    let charIndex = 0;
+    
+    function typeGlitch() {
+      if (charIndex < glitchMessage.length) {
+        promptText.textContent += glitchMessage[charIndex];
+        charIndex++;
+        setTimeout(typeGlitch, 50); // Faster typing for glitch message
+      } else {
+        setTimeout(() => {
+          window.location.href = "https://www.dndbeyond.com"; // Redirect to D&D Beyond
+        }, 2000);
+      }
+    }
+    
+    typeGlitch();
+  }
+
+  // Start typing prompt
+  promptText.textContent = '';
+  typePrompt();
+}
   });
 }
 
