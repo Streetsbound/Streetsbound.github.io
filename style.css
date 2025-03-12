@@ -8,9 +8,6 @@ body {
     overflow: hidden;
 }
 
-.hidden {
-    display: none !important;
-}
 
 /* Loading screen */
 #loading-screen {
