@@ -34,10 +34,13 @@ body {
 
 /* Prompt screen */
 #prompt-screen {
-    white-space: pre-wrap;
+    position: relative; /* Allows absolute positioning for cursor */
 }
 
 .cursor {
+    position: absolute;
+    bottom: 10px; /* Adjust based on your layout */
+    left: 20px;
     animation: blink 1s infinite;
 }
 
@@ -72,3 +75,6 @@ body {
   animation: text-glitch 0.1s infinite;
   color: #ff00ff !important;
 }
+
+
+
