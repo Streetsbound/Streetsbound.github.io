@@ -10,10 +10,32 @@
     <!-- Loading Screen -->
     <div id="loading-screen"></div>
 
-    <!-- BBS Content (hidden until loading finishes) -->
-    <div id="bbs-content" style="display: none;">
+    <!-- Glitch Screen (hidden) -->
+    <div id="glitch-screen" class="hidden">
+        ENTERING -> SHADOWLANDS_IRC
+        <<LET YOUR EYES ADJUST TO THE SHADOWS>>
+        Z:\MEGADECK\ASIST_VM\DIAL\SH4D0WL4ND_2
+        CMD CHAT
+    </div>
+
+    <!-- Prompt Screen (hidden) -->
+    <div id="prompt-screen" class="hidden">
+        <div id="prompt-text">
+            >_ . . .
+            >_ . . .
+            >_ . . .
+            >_ . . . .
+            >_ Hello ィヤね there ChUMmeRs
+            >_ Do you want 異 to see just 唄茨 how DEEP the RaBbit hOle Goes?
+            [Y]es / [N]o
+        </div>
+        <div class="cursor">_</div>
+    </div>
+
+    <!-- BBS Content (hidden) -->
+    <div id="bbs-content" class="hidden">
         <pre id="ascii-art">
- _____ _   _   ___ ______ _____  _    _ _       ___   _   _______  _____ 
+             _____ _   _   ___ ______ _____  _    _ _       ___   _   _______  _____ 
 /  ___| | | | / _ \|  _  \  _  || |  | | |     / _ \ | \ | |  _  \/  ___|
 \ `--.| |_| |/ /_\ \ | | | | | || |  | | |    / /_\ \|  \| | | | |\ `--. 
  `--. \  _  ||  _  | | | | | | || |/\| | |    |  _  || . ` | | | | `--. \
@@ -49,9 +71,7 @@
                                #&(***/(((/**((&                                 
                                  &&&(    ,&&/&
         </pre>
-        <div id="posts">
-            <!-- Posts will go here -->
-        </div>
+        <div id="posts"></div>
     </div>
 
     <script src="script.js"></script>
