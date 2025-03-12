@@ -80,5 +80,5 @@ function setupPrompt() {
   });
 }
 
-// Start the sequence
+// Start the sequence here
 updateTerminal();
