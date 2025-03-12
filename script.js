@@ -108,7 +108,7 @@ function setupPrompt() {
   }
 
   function typeRedirectMessage() {
-    const glitchMessage = "S0RrY, CHUMMerS 0nlyy. . . S3nding Y0u s0m3wh3r3 TR3NDY f0r C0rps";
+    const glitchMessage = "S0RrY, CHUMMerS 0nlyy. . . SEnD1ng YOu sOm3wHEr3 >TREND< f0r C0rps";
     let charIndex = 0;
     
     function typeGlitch() {
