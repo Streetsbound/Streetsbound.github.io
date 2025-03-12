@@ -1,20 +1,42 @@
-/* style.css */
+/* General styles */
 body {
-    background: #000;
-    color: #0f0; /* Matrix green */
+    background: black;
+    color: limegreen;
     font-family: 'Courier New', monospace;
     margin: 0;
     padding: 20px;
-	display: flex;
-    flex-direction: column;
+    overflow: hidden;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* Loading screen */
 #loading-screen {
     white-space: pre-wrap;
     line-height: 1.5;
 }
 
-/* Blinking cursor animation */
+/* Glitch screen */
+#glitch-screen {
+    white-space: pre-wrap;
+    animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red, -2px -2px cyan; }
+    20% { transform: skew(5deg); }
+    40% { text-shadow: -2px 2px blue; }
+    60% { transform: skew(-5deg); }
+    80% { opacity: 0.8; }
+}
+
+/* Prompt screen */
+#prompt-screen {
+    white-space: pre-wrap;
+}
+
 .cursor {
     animation: blink 1s infinite;
 }
@@ -22,4 +44,11 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+/* BBS content */
+#ascii-art {
+    white-space: pre;
+    text-align: center;
+    font-size: 12px;
 }

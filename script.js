@@ -1,8 +1,10 @@
-// script.js
 const loadingScreen = document.getElementById('loading-screen');
+const glitchScreen = document.getElementById('glitch-screen');
+const promptScreen = document.getElementById('prompt-screen');
 const bbsContent = document.getElementById('bbs-content');
 
-const loadingText = [
+const loadingLines = [
+    // Your loading text (copy-paste your full list here)
     "~$ bash --version",
     "NEOPORTAL_OS, version 8.4.46(2)-release (x8664_32-cyb-matrix-os)",
     "License ZGOmtx_v4",
@@ -33,33 +35,51 @@ const loadingText = [
     "<<LET YOUR EYES ADJUST TO THE SHADOWS>>",
     "",
     "Z:\\MEGADECK\\ASIST_VM\\DIAL\\SH4D0WL4ND_2",
-    "CMD CHAT",
-    "",
-    ">_ . . .",
-    ">_ . . .",
-    ">_ . . .",
-    ">_ . . . .",
-    ">_ Hello ィヤね there ChUMmeRs",
-    ">_ Do you want 異 to see just 唄茨 how DEEP the RaBbit hOle Goes?",
-    "",
-    ">[Y]es",
-    ">[N]o"
+    "CMD CHAT"
 ];
 
 let lineIndex = 0;
+const maxVisibleLines = 4; // Only show 4 lines at a time
 
-function simulateLoading() {
-    if (lineIndex < loadingText.length) {
-        // Add line and a line break
-        loadingScreen.textContent += loadingText[lineIndex] + '\n';
+function updateTerminal() {
+    if (lineIndex < loadingLines.length) {
+        // Add new line and trim old lines
+        loadingScreen.textContent = [
+            ...loadingScreen.textContent.split('\n').slice(-maxVisibleLines),
+            loadingLines[lineIndex]
+        ].join('\n');
+
         lineIndex++;
-        setTimeout(simulateLoading, 500); // Adjust speed here (500ms = 0.5s delay)
+        loadingScreen.scrollTop = loadingScreen.scrollHeight; // Auto-scroll
+
+        // Slow down for final section
+        const delay = lineIndex > 25 ? 1000 : 500;
+        setTimeout(updateTerminal, delay);
     } else {
-        // Hide loading screen, show BBS content
-        loadingScreen.style.display = 'none';
-        bbsContent.style.display = 'block';
+        // Show glitch screen
+        loadingScreen.classList.add('hidden');
+        glitchScreen.classList.remove('hidden');
+        
+        // After 3 seconds, show prompt
+        setTimeout(() => {
+            glitchScreen.classList.add('hidden');
+            promptScreen.classList.remove('hidden');
+            setupPrompt(); // Initialize keyboard input
+        }, 3000);
     }
 }
 
-// Start the loading animation
-simulateLoading();
+function setupPrompt() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'y' || e.key === 'Y') {
+            promptScreen.classList.add('hidden');
+            bbsContent.classList.remove('hidden');
+        } else if (e.key === 'n' || e.key === 'N') {
+            promptScreen.innerHTML += '\n>_ Disconnecting...';
+            setTimeout(() => window.close(), 1000);
+        }
+    });
+}
+
+// Start the sequence
+updateTerminal();
