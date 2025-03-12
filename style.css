@@ -60,3 +60,15 @@ body {
 .hidden {
   display: none !important; /* Force hide elements */
 }
+
+@keyframes text-glitch {
+  0% { text-shadow: 2px 2px red; }
+  25% { transform: skew(5deg); }
+  50% { text-shadow: -2px -2px cyan; }
+  75% { transform: skew(-5deg); }
+}
+
+.glitch-text {
+  animation: text-glitch 0.1s infinite;
+  color: #ff00ff !important;
+}
