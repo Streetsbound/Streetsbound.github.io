@@ -5,6 +5,8 @@ body {
     font-family: 'Courier New', monospace;
     margin: 0;
     padding: 20px;
+	display: flex;
+    flex-direction: column;
 }
 
 #loading-screen {
