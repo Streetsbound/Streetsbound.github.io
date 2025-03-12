@@ -50,7 +50,6 @@ body {
 #ascii-art {
     white-space: pre;       /* Preserve exact spacing */
     font-family: 'Courier New', monospace; /* Enforce monospace font */
-    overflow-x: auto;      /* Add horizontal scroll if needed */
     text-align: left;      /* Align to left (prevents shifting) */
     margin: 0 auto;        /* Center the art */
     display: block;        /* Fix alignment issues */
