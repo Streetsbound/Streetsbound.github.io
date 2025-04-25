@@ -2,6 +2,15 @@ const loadingScreen = document.getElementById('loading-screen');
 const glitchScreen = document.getElementById('glitch-screen');
 const promptScreen = document.getElementById('prompt-screen');
 const bbsContent = document.getElementById('bbs-content');
+const supabase = createClient(
+  'https://ipvfeclixygixmncgnag.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlwdmZlY2xpeHlnaXhtbmNnbmFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1OTg0NDUsImV4cCI6MjA2MTE3NDQ0NX0.b8OxCME8o6VWAVT6w5ZkOOQwn2FrAstNNyp0Ay9ccXo
+'
+);
+const mainInterface = document.getElementById('main-interface');
+// Add to state variables at top
+let currentUser = null;
+let currentCategory = '#OPEN_ALL'; // Add this
 
 const loadingLines = [
     // Your loading text (copy-paste your full list here)
@@ -94,14 +103,14 @@ function setupPrompt() {
   typePrompt();
 }
 
+// Modify the existing setupInputHandler
 function setupInputHandler() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'y' || e.key === 'Y') {
-      promptScreen.classList.add('hidden');
-      bbsContent.classList.remove('hidden');
+      // Keep prompt screen visible but add login modal
+      promptScreen.classList.add('dimmed');
+      showLoginModal();
     } else if (e.key === 'n' || e.key === 'N') {
-      const promptText = document.getElementById('prompt-text');
-      promptText.textContent += '\n\n>_ ';
       typeRedirectMessage();
     }
   });
@@ -129,3 +138,137 @@ function typeRedirectMessage() {
 
 // Start the sequence
 updateTerminal();
+
+// Add new functions
+function showLoginModal() {
+  const modal = document.getElementById('login-modal');
+  modal.classList.remove('hidden');
+  
+  // Focus on first input
+  document.getElementById('handle-input').focus();
+
+  document.addEventListener('keydown', async (e) => {
+    if (e.key === 'Enter') {
+      const handle = document.getElementById('handle-input').value;
+      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value)));onst password = btoa(document.getElementById('password-input').value);
+      
+      const { data } = await supabase
+        .from('users')
+        .select()
+        .eq('handle', handle)
+        .eq('password', password);
+
+      if (data.length > 0) {
+        currentUser = data[0];
+        modal.classList.add('hidden');
+		promptScreen.classList.add('hidden');
+        initializeMainInterface();
+      }
+    }
+  });
+}
+
+function initializeMainInterface() {
+  document.getElementById('main-interface').classList.remove('hidden');
+  loadDirectory();
+  loadPosts(currentCategory);
+}
+
+// Add directory loading
+async function loadDirectory() {
+  const categories = [
+    '#OPEN_ALL', '#PRIORITY_ALL', '#MIAMIJACKETS_ALL', 
+    '#BISCAYNEBUMPS', '#TAGSALE', '#WIZNESSBIZARD',
+    '#MIAMIHAXX_ALL', '#USER_DIR', '#WAREZ_DIR'
+  ];
+
+  const directory = document.getElementById('directory');
+  directory.innerHTML = categories.map(cat => 
+    `<div class="category" onclick="loadPosts('${cat}')">${cat}</div>`
+  ).join('\n');
+}
+
+// Add post loading
+async function loadPosts(category) {
+  currentCategory = category;
+  let query = supabase
+    .from('posts')
+    .select()
+    .eq('category', category)
+    .order('created_at', { ascending: false });
+
+  if (category.startsWith('#USER')) {
+    query = query.or(`handle.eq.${currentUser.handle},category.eq.#PRIORITY_ALL`);
+  }
+
+  const { data } = await query;
+  renderPosts(data);
+}
+
+function renderPosts(posts) {
+  const container = document.getElementById('posts-container');
+  container.innerHTML = posts.map(post => `
+    <div class="post">
+      <div class="post-header">${post.id} | ${post.title}</div>
+      <div class="meta">${post.handle} @ ${new Date(post.created_at).toLocaleDateString()}</div>
+      <div class="content">${formatContent(post.content)}</div>
+    </div>
+  `).join('');
+}
+
+function formatContent(text) {
+  return text.match(/.{1,80}/g).map(line => `> ${line}`).join('\n');
+}
+
+// Add this before keyboard handler
+async function newPost() {
+  const title = prompt('Post Title (30 chars max):');
+  const content = prompt('Post Content:');
+  
+  if (!content) return;
+
+  await supabase.from('posts').insert([{
+    id: generatePostId(),
+    title: title || content.slice(0,30),
+    content,
+    category: currentCategory,
+    handle: currentUser.handle
+  }]);
+  
+  loadPosts(currentCategory);
+}
+
+function generatePostId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  return Array.from({length:3}, () => chars[Math.floor(Math.random()*36)]).join('');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (!currentUser) return;
+  
+  switch(e.key.toLowerCase()) {
+    case 'h': showHelp(); break;
+    case 'n': newPost(); break;
+    case 'c': loadDirectory(); break;
+    case 'q': logout(); break;
+  }
+});
+
+function showHelp() {
+  alert(`SHADOWNET COMMANDS:
+H - Show help
+N - New post
+C - Return to directory
+Q - Logout
+
+MOUSE CONTROLS:
+Click categories to browse
+Click posts to view details`);
+}
+
+function logout() {
+  currentUser = null;
+  document.getElementById('main-interface').classList.add('hidden');
+  showLoginModal();
+}
+
