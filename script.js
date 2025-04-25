@@ -140,6 +140,7 @@ updateTerminal();
 
 // Add new functions
 // CORRECTED showLoginModal() function
+// CORRECTED showLoginModal() function
 function showLoginModal() {
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
@@ -178,9 +179,7 @@ function showLoginModal() {
       }
     }
   });
-}
-}
-}
+} // REMOVED EXTRA BRACES HERE
 
 function initializeMainInterface() {
   document.getElementById('main-interface').classList.remove('hidden');
