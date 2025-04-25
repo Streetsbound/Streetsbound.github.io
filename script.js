@@ -104,15 +104,23 @@ function setupPrompt() {
 
 // Modify the existing setupInputHandler
 function setupInputHandler() {
-  document.addEventListener('keydown', (e) => {
+  // define a named function so we can remove it
+  function handlePromptKey(e) {
+    // only act if promptScreen is still visible
+    if (promptScreen.classList.contains('hidden')) return;
+
     if (e.key === 'y' || e.key === 'Y') {
-      // Keep prompt screen visible but add login modal
+      document.removeEventListener('keydown', handlePromptKey);
       promptScreen.classList.add('dimmed');
       showLoginModal();
-    } else if (e.key === 'n' || e.key === 'N') {
+    } 
+    else if (e.key === 'n' || e.key === 'N') {
+      document.removeEventListener('keydown', handlePromptKey);
       typeRedirectMessage();
     }
-  });
+  }
+
+  document.addEventListener('keydown', handlePromptKey);
 }
 
 function typeRedirectMessage() {
