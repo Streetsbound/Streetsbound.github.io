@@ -126,3 +126,19 @@ body {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
+
+#main-interface {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "art    content"
+    "online online"
+    "input  input";
+  gap: 10px;
+}
+#ascii-art   { grid-area: art;     overflow: auto; }
+#posts-container { grid-area: content; }
+#online-users   { grid-area: online; border-top: 1px solid #0f0; }
+#terminal-input { grid-area: input;  }
