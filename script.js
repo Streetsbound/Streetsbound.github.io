@@ -150,7 +150,7 @@ if (error) {
   console.error('Login error:', error);
   alert('AUTH FAILURE: CONNECTION ERROR');
   return;
-}
+  }
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
   
