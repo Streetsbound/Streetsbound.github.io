@@ -149,9 +149,7 @@ function showLoginModal() {
     if (e.key !== 'Enter') return;
     try {
       const handle = document.getElementById('handle-input').value;
-      const password = btoa(unescape(encodeURIComponent(
-        document.getElementById('password-input').value
-      )));
+      const password = document.getElementById('password-input').value;
 
       const { data, error } = await supabase
         .from('users')
