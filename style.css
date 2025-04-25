@@ -70,3 +70,39 @@ body {
   color: #ff00ff !important;
 }
 
+/* Login Modal */
+#login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  border: 2px solid lime;
+  padding: 20px;
+  z-index: 1000;
+}
+
+#login-modal input {
+  background: black;
+  border: none;
+  color: lime;
+  font-family: 'Courier New', monospace;
+  margin-left: 10px;
+}
+
+/* Main Interface */
+#main-interface {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+}
+
+#directory {
+  border-right: 1px dashed #00ff00;
+  padding-right: 15px;
+}
+
+.post {
+  margin-bottom: 1em;
+  border-bottom: 1px dotted #00ff0055;
+}
