@@ -149,7 +149,8 @@ function showLoginModal() {
   document.addEventListener('keydown', async (e) => {
     if (e.key === 'Enter') {
       const handle = document.getElementById('handle-input').value;
-      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value)));onst password = btoa(document.getElementById('password-input').value);
+      // FIXED LINE: Removed duplicate password declaration
+      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value));
       
       const { data } = await supabase
         .from('users')
@@ -160,7 +161,7 @@ function showLoginModal() {
       if (data.length > 0) {
         currentUser = data[0];
         modal.classList.add('hidden');
-		promptScreen.classList.add('hidden');
+        promptScreen.classList.add('hidden');
         initializeMainInterface();
       }
     }
