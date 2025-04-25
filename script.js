@@ -139,6 +139,7 @@ function typeRedirectMessage() {
 updateTerminal();
 
 // Add new functions
+// CORRECTED showLoginModal() function
 function showLoginModal() {
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
@@ -146,25 +147,38 @@ function showLoginModal() {
   // Focus on first input
   document.getElementById('handle-input').focus();
 
-  document.addEventListener('keydown', async (e) => {
+  // Add async keyword to the event listener callback
+  document.addEventListener('keydown', async function handleLoginKeypress(e) {
     if (e.key === 'Enter') {
-      const handle = document.getElementById('handle-input').value;
-      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value))); // Fixed line
-      
-      const { data } = await supabase
-        .from('users')
-        .select()
-        .eq('handle', handle)
-        .eq('password', password);
+      try {
+        const handle = document.getElementById('handle-input').value;
+        const password = btoa(unescape(encodeURIComponent(
+          document.getElementById('password-input').value
+        )));
 
-      if (data.length > 0) {
-        currentUser = data[0];
-        modal.classList.add('hidden');
-        promptScreen.classList.add('hidden');
-        initializeMainInterface();
+        const { data, error } = await supabase
+          .from('users')
+          .select()
+          .eq('handle', handle)
+          .eq('password', password);
+
+        if (error) throw error;
+        
+        if (data.length > 0) {
+          currentUser = data[0];
+          modal.classList.add('hidden');
+          promptScreen.classList.add('hidden');
+          initializeMainInterface();
+          // Remove listener after successful login
+          document.removeEventListener('keydown', handleLoginKeypress);
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        alert('AUTH FAILURE: CHECK YOUR CREDS CHUMMER');
       }
     }
   });
+}
 }
 }
 
