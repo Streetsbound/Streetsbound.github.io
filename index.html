@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Only the loading screen is visible initially -->
+    <!-- Loading screen -->
     <div id="loading-screen"></div>
 
-    <!-- Everything else starts hidden -->
+    <!-- Glitch screen -->
     <div id="glitch-screen" class="hidden">
         ENTERING -> SHADOWLANDS_IRC
         <<LET YOUR EYES ADJUST TO THE SHADOWS>>
@@ -18,12 +18,32 @@
         CMD CHAT
     </div>
 
-<div id="prompt-screen" class="hidden">
-    <pre id="prompt-text"></pre> <!-- Empty now! -->
-    <div class="cursor">_</div>
-</div>
+    <!-- Login Modal (moved up in DOM) -->
+    <div id="login-modal" class="hidden">
+        <pre id="ascii-login-art">
+ _____ _   _   ___ ______ _____  _    _ _       ___   _   _______  _____ 
+/  ___| | | | / _ \|  _  \  _  || |  | | |     / _ \ | \ | |  _  \/  ___|
+\ `--.| |_| |/ /_\ \ | | | | | || |  | | |    / /_\ \|  \| | | | |\ `--. 
+ `--. \  _  ||  _  | | | | | | || |/\| | |    |  _  || . ` | | | | `--. \
+/\__/ / | | || | | | |/ /\ \_/ /\  /\  / |____| | | || |\  | |/ / /\__/ /
+\____/\_| |_/\_| |_/___/  \___/  \/  \/\_____/\_| |_/\_| \_/___/  \____/ 
+        </pre>
+        <div class="login-form">
+            <div class="input-line">
+                <span class="prompt">HANDLE:</span>
+                <input id="handle-input" maxlength="20">
+            </div>
+            <div class="input-line">
+                <span class="prompt">PASSCODE:</span>
+                <input id="password-input" type="password" maxlength="8">
+            </div>
+            <div class="hint">[PRESS ENTER TO CYBERDECK_AUTH.EXE]</div>
+        </div>
+    </div>
 
-    <div id="bbs-content" class="hidden">
+    <!-- Main Interface -->
+    <div id="main-interface" class="hidden">
+        <!-- Your original ASCII art -->
         <pre id="ascii-art">
  _____ _   _   ___ ______ _____  _    _ _       ___   _   _______  _____ 
 /  ___| | | | / _ \|  _  \  _  || |  | | |     / _ \ | \ | |  _  \/  ___|
@@ -61,9 +81,17 @@
                                #&(***/(((/**((&                                 
                                  &&&(    ,&&/&
         </pre>
-        <div id="posts"></div>
+        
+        <!-- Interface Sections -->
+        <div id="header">
+            <div id="priority-banner"></div>
+            <div id="online-users"></div>
+        </div>
+        <div id="directory"></div>
+        <div id="posts-container"></div>
     </div>
 
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>
