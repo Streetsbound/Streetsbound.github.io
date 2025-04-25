@@ -177,7 +177,8 @@ function showLoginModal() {
   };
 
   document.addEventListener('keydown', handleLoginKeypress);
-}  // ← don’t forget this!
+} // ← this closing brace was missing!
+
 
 
 function initializeMainInterface() {
