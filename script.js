@@ -179,7 +179,7 @@ function showLoginModal() {
       }
     }
   });
-} // REMOVED EXTRA BRACES HERE
+
 
 function initializeMainInterface() {
   document.getElementById('main-interface').classList.remove('hidden');
