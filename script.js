@@ -181,6 +181,7 @@ function showLoginModal() {
 
 
 
+
 function initializeMainInterface() {
   document.getElementById('main-interface').classList.remove('hidden');
   loadDirectory();
