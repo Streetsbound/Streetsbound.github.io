@@ -4,8 +4,7 @@ const promptScreen = document.getElementById('prompt-screen');
 const bbsContent = document.getElementById('bbs-content');
 const supabase = createClient(
   'https://ipvfeclixygixmncgnag.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlwdmZlY2xpeHlnaXhtbmNnbmFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1OTg0NDUsImV4cCI6MjA2MTE3NDQ0NX0.b8OxCME8o6VWAVT6w5ZkOOQwn2FrAstNNyp0Ay9ccXo
-'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlwdmZlY2xpeHlnaXhtbmNnbmFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1OTg0NDUsImV4cCI6MjA2MTE3NDQ0NX0.b8OxCME8o6VWAVT6w5ZkOOQwn2FrAstNNyp0Ay9ccXo'
 );
 const mainInterface = document.getElementById('main-interface');
 // Add to state variables at top
