@@ -140,6 +140,17 @@ updateTerminal();
 
 // Add new functions
 function showLoginModal() {
+  const { data, error } = await supabase // Changed to include error
+  .from('users')
+  .select()
+  .eq('handle', handle)
+  .eq('password', password);
+
+if (error) {
+  console.error('Login error:', error);
+  alert('AUTH FAILURE: CONNECTION ERROR');
+  return;
+}
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
   
@@ -149,7 +160,6 @@ function showLoginModal() {
   document.addEventListener('keydown', async (e) => {
     if (e.key === 'Enter') {
       const handle = document.getElementById('handle-input').value;
-      // FIXED LINE: Removed duplicate password declaration
       const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value));
       
       const { data } = await supabase
