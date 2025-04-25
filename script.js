@@ -10,10 +10,9 @@ const supabase = createClient(
 const mainInterface = document.getElementById('main-interface');
 // Add to state variables at top
 let currentUser = null;
-let currentCategory = '#OPEN_ALL'; // Add this
+let currentCategory = '#OPEN_ALL';
 
 const loadingLines = [
-    // Your loading text (copy-paste your full list here)
     "~$ bash --version",
     "NEOPORTAL_OS, version 8.4.46(2)-release (x8664_32-cyb-matrix-os)",
     "License ZGOmtx_v4",
