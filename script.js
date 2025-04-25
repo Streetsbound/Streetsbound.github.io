@@ -140,17 +140,6 @@ updateTerminal();
 
 // Add new functions
 function showLoginModal() {
-  const { data, error } = await supabase // Changed to include error
-  .from('users')
-  .select()
-  .eq('handle', handle)
-  .eq('password', password);
-
-if (error) {
-  console.error('Login error:', error);
-  alert('AUTH FAILURE: CONNECTION ERROR');
-  return;
-  }
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
   
@@ -160,7 +149,7 @@ if (error) {
   document.addEventListener('keydown', async (e) => {
     if (e.key === 'Enter') {
       const handle = document.getElementById('handle-input').value;
-      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value));
+      const password = btoa(unescape(encodeURIComponent(document.getElementById('password-input').value))); // Fixed line
       
       const { data } = await supabase
         .from('users')
@@ -176,6 +165,7 @@ if (error) {
       }
     }
   });
+}
 }
 
 function initializeMainInterface() {
