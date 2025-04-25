@@ -139,46 +139,45 @@ function typeRedirectMessage() {
 updateTerminal();
 
 // Add new functions
-// CORRECTED showLoginModal() function
-// CORRECTED showLoginModal() function
 function showLoginModal() {
   const modal = document.getElementById('login-modal');
   modal.classList.remove('hidden');
-  
-  // Focus on first input
   document.getElementById('handle-input').focus();
 
-  // Add async keyword to the event listener callback
-  document.addEventListener('keydown', async function handleLoginKeypress(e) {
-    if (e.key === 'Enter') {
-      try {
-        const handle = document.getElementById('handle-input').value;
-        const password = btoa(unescape(encodeURIComponent(
-          document.getElementById('password-input').value
-        )));
+  // capture Enter, perform async login check
+  const handleLoginKeypress = async (e) => {
+    if (e.key !== 'Enter') return;
+    try {
+      const handle = document.getElementById('handle-input').value;
+      const password = btoa(unescape(encodeURIComponent(
+        document.getElementById('password-input').value
+      )));
 
-        const { data, error } = await supabase
-          .from('users')
-          .select()
-          .eq('handle', handle)
-          .eq('password', password);
+      const { data, error } = await supabase
+        .from('users')
+        .select()
+        .eq('handle', handle)
+        .eq('password', password);
 
-        if (error) throw error;
-        
-        if (data.length > 0) {
-          currentUser = data[0];
-          modal.classList.add('hidden');
-          promptScreen.classList.add('hidden');
-          initializeMainInterface();
-          // Remove listener after successful login
-          document.removeEventListener('keydown', handleLoginKeypress);
-        }
-      } catch (error) {
-        console.error('Login error:', error);
+      if (error) throw error;
+
+      if (data.length > 0) {
+        currentUser = data[0];
+        modal.classList.add('hidden');
+        promptScreen.classList.add('hidden');
+        initializeMainInterface();
+        document.removeEventListener('keydown', handleLoginKeypress);
+      } else {
         alert('AUTH FAILURE: CHECK YOUR CREDS CHUMMER');
       }
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('AUTH FAILURE: CHECK YOUR CREDS CHUMMER');
     }
-  });
+  };
+
+  document.addEventListener('keydown', handleLoginKeypress);
+}  // ← don’t forget this!
 
 
 function initializeMainInterface() {
