@@ -106,3 +106,17 @@ body {
   margin-bottom: 1em;
   border-bottom: 1px dotted #00ff0055;
 }
+
+.dimmed {
+  opacity: 0.5;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+#login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
