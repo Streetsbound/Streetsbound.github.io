@@ -177,7 +177,7 @@ function showLoginModal() {
   };
 
   document.addEventListener('keydown', handleLoginKeypress);
-} // ← this closing brace was missing!
+}
 
 
 
