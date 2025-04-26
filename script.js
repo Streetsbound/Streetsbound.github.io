@@ -145,6 +145,16 @@ function typeRedirectMessage() {
   typeGlitch();
 }
 
+function showDirectoryView() {
+  document.getElementById('directory').classList.remove('hidden');
+  document.getElementById('posts-container').classList.add('hidden');
+}
+
+function showPostsView() {
+  document.getElementById('directory').classList.add('hidden');
+  document.getElementById('posts-container').classList.remove('hidden');
+}
+
 // Start the sequence
 updateTerminal();
 
@@ -192,6 +202,7 @@ function showLoginModal() {
 
 function initializeMainInterface() {
   document.getElementById('main-interface').classList.remove('hidden');
+  showDirectoryView();
   loadDirectory();
   loadPosts(currentCategory);
 }
@@ -206,13 +217,24 @@ async function loadDirectory() {
 
   const directory = document.getElementById('directory');
   directory.innerHTML = categories.map(cat => 
-    `<div class="category" onclick="loadPosts('${cat}')">${cat}</div>`
-  ).join('\n');
+directory.innerHTML = categories.map(cat =>
+	`<div class="category"
+	 onclick="loadPosts('${cat}'); showPostsView(); window.location.hash='${cat.substring(1)}';"
+   >
+	 ${cat}
+   </div>`
+).join('\n');
 }
 
 // Add post loading
 async function loadPosts(category) {
   currentCategory = category;
+  
+  const container = document.getElementById('posts-container');
+  container.innerHTML = '> Switching directories...\n> Loading posts from ' + category + '\n\n';
+  
+  await new Promise(res => setTimeout(res, 500)); // simulate terminal delay
+
   let query = supabase
     .from('posts')
     .select()
@@ -271,7 +293,7 @@ document.addEventListener('keydown', (e) => {
   switch(e.key.toLowerCase()) {
     case 'h': showHelp(); break;
     case 'n': newPost(); break;
-    case 'c': loadDirectory(); break;
+    case 'c': showDirectoryView(); window.location.hash = ''; break;
     case 'q': logout(); break;
   }
 });
