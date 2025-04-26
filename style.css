@@ -143,7 +143,7 @@ body {
   gap: 10px;
   overflow: hidden;
 }
-#ascii-art   { grid-area: art;     overflow: auto; }
+#ascii-art   { grid-area: art;     overflow: hidden; }
 #posts-container { grid-area: content; }
 #online-users   { grid-area: online; border-top: 1px solid #0f0; }
 #terminal-input { grid-area: input;  }
