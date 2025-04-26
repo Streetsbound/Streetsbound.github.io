@@ -131,6 +131,17 @@ body {
   z-index: 1000;
 }
 
+#login-error {
+  color: red;
+  background: black;
+  font-family: 'Courier New', monospace;
+  margin-top: 10px;
+  font-size: 14px;
+  padding: 5px 10px;
+  border: 1px dashed red;
+}
+
+
 #main-interface {
   display: grid;
   height: 100vh;
