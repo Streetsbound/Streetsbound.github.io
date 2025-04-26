@@ -121,7 +121,7 @@ function setupInputHandler() {
   }
 
   setTimeout(() => {
-  document.addEventListener("keydown", handlePromptKeys);
+  document.addEventListener("keydown", handlePromptKey);
 }, 200);
 }
 
