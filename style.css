@@ -58,6 +58,10 @@ body {
     display: block;        /* Fix alignment issues */
     font-size: 12px;       /* Adjust if lines still shift */
     line-height: 1;        /* Tighten line spacing */
+	grid-area: art;
+	overflow-x: auto;
+	overflow-y: auto;
+	max-width: 100%;
 }
 
 .hidden {
@@ -96,11 +100,11 @@ body {
   margin-left: 10px;
 }
 
-/* Main Interface */
-#main-interface {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 20px;
+#posts-container {
+  grid-area: content;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-left: 10px;
 }
 
 #directory {
@@ -130,15 +134,22 @@ body {
 #main-interface {
   display: grid;
   height: 100vh;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 600px 1fr; /* ASCII gets fixed width */
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "art    content"
     "online online"
     "input  input";
   gap: 10px;
+  overflow: hidden;
 }
 #ascii-art   { grid-area: art;     overflow: auto; }
 #posts-container { grid-area: content; }
 #online-users   { grid-area: online; border-top: 1px solid #0f0; }
 #terminal-input { grid-area: input;  }
+
+
+
+
+
+
