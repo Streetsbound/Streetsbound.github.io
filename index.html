@@ -42,14 +42,13 @@
                 <span class="prompt">PASSCODE:</span>
                 <input id="password-input" type="password" maxlength="8">
             </div>
-            <div class="hint">[PRESS ENTER TO CYBERDECK_AUTH.EXE]</div>
+            <div class="hint">[PRESS ENTER TO VERIFY AUTH.BAT]</div>
         </div>
     </div>
 
-    <!-- Main Interface -->
-    <div id="main-interface" class="hidden">
-        <!-- Your original ASCII art -->
-        <pre id="ascii-art">
+<div id="main-interface" class="hidden">
+  <!-- Row 1: ASCII art on left, content (directory + posts) on right -->
+  <pre id="ascii-art">
  _____ _   _   ___ ______ _____  _    _ _       ___   _   _______  _____ 
 /  ___| | | | / _ \|  _  \  _  || |  | | |     / _ \ | \ | |  _  \/  ___|
 \ `--.| |_| |/ /_\ \ | | | | | || |  | | |    / /_\ \|  \| | | | |\ `--. 
@@ -85,17 +84,21 @@
                                (&&,&(/&/&/&&,&#&         @                      
                                #&(***/(((/**((&                                 
                                  &&&(    ,&&/&
-        </pre>
-        
-        <!-- Interface Sections -->
-        <div id="header">
-            <div id="priority-banner"></div>
-            <div id="online-users"></div>
-        </div>
-        <div id="directory"></div>
-        <div id="posts-container"></div>
-    </div>
+  </pre>
+  <div id="posts-container">
+    <!-- Directory of channels -->
+    <div id="directory"></div>
+    <!-- Forum threads will render here -->
+  </div>
 
+  <!-- Row 2: Online users bar (spans both columns) -->
+  <div id="online-users"></div>
+
+  <!-- Row 3: Blinking-cursor input prompt (spans both columns) -->
+  <div id="terminal-input">
+    <span id="input-prompt">&gt;_ </span><span class="cursor"></span>
+  </div>
+</div>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
