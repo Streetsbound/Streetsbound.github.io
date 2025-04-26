@@ -120,7 +120,9 @@ function setupInputHandler() {
     }
   }
 
-  document.addEventListener('keydown', handlePromptKey);
+  setTimeout(() => {
+  document.addEventListener("keydown", handlePromptKeys);
+}, 200);
 }
 
 function typeRedirectMessage() {
