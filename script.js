@@ -214,7 +214,7 @@ async function loadDirectory() {
     '#BISCAYNEBUMPS', '#TAGSALE', '#WIZNESSBIZARD',
     '#MIAMIHAXX_ALL', '#USER_DIR', '#WAREZ_DIR'
   ];
-
+}
 const directory = document.getElementById('directory');
 	directory.innerHTML = categories.map(cat =>
 	  `<div
