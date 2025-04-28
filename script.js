@@ -184,7 +184,6 @@ function showLoginModal() {
         modal.classList.add('hidden');
         promptScreen.classList.add('hidden');
         initializeMainInterface();
-        document.removeEventListener('keydown', handleLoginKeypress);
       } else {
         alert('AUTH FAILURE: CHECK YOUR CREDS CHUMMER');
       }
@@ -245,8 +244,13 @@ async function loadPosts(category) {
     query = query.or(`handle.eq.${currentUser.handle},category.eq.#PRIORITY_ALL`);
   }
 
-  const { data } = await query;
-  renderPosts(data);
+const { data, error } = await query;
+if (error) {
+  console.error('Post load error:', error);
+  container.innerHTML += '\n> Error loading posts.';
+  return;
+}
+renderPosts(data || []);
 }
 
 function renderPosts(posts) {
