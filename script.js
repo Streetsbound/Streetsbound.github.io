@@ -264,6 +264,7 @@ function renderPosts(posts) {
   `).join('');
 }
 
+
 function formatContent(text) {
   return text.match(/.{1,80}/g).map(line => `> ${line}`).join('\n');
 }
