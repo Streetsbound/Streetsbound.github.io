@@ -214,16 +214,17 @@ async function loadDirectory() {
     '#BISCAYNEBUMPS', '#TAGSALE', '#WIZNESSBIZARD',
     '#MIAMIHAXX_ALL', '#USER_DIR', '#WAREZ_DIR'
   ];
+
+  const directory = document.getElementById('directory');
+  directory.innerHTML = categories.map(cat =>
+    `<div
+      class="category"
+      onclick="loadPosts('${cat}'); showPostsView(); window.location.hash='${cat.substring(1)}';"
+    >
+      ${cat}
+    </div>`
+  ).join('\n');
 }
-const directory = document.getElementById('directory');
-	directory.innerHTML = categories.map(cat =>
-	  `<div
-		 class="category"
-		 onclick="loadPosts('${cat}'); showPostsView(); window.location.hash='${cat.substring(1)}';"
-	   >
-		 ${cat}
-	   </div>`
-	).join('\n');
 
 // Add post loading
 async function loadPosts(category) {
