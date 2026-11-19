@@ -4,25 +4,283 @@
 <body>
 <p><a href="index.html">Home</a></p>
 <h1>Build a warband</h1>
-<p>Placeholder. Nothing on this page works yet.</p>
+<p id="status">Loading data...</p>
 
-<h2>1. Choose player and faction</h2>
-<p>(player picker and faction picker go here)</p>
+<div id="app" hidden>
 
-<h2>2. Choose origin</h2>
-<p>(origin picker goes here; the origin decides the stronghold)</p>
+<h2>1. Faction</h2>
+<p><select id="faction"></select></p>
+
+<h2>2. Origin</h2>
+<p>Not built yet (needs origins.csv).</p>
 
 <h2>3. Recruit fighters</h2>
-<p>(unit picker, fighter name, cost; unit limits checked here)</p>
+<p><select id="unit"></select> <button id="addUnit">Add fighter</button></p>
 
-<h2>4. Buy wargear</h2>
-<p>(wargear picker per fighter, filtered by the unit's wargear list code)</p>
+<h2>4. Fighters and wargear</h2>
+<div id="fighters"><p>No fighters yet.</p></div>
 
-<h2>5. Budget</h2>
-<p>Starting silver: 1000. Leftover silver goes to the stash.</p>
-<p>(silver spent, silver left, warband rating go here)</p>
+<h2>5. Skills</h2>
+<p>Not built yet. Some Leaders and Champions pick skills when recruited; for now, record them by hand.</p>
 
-<h2>6. Save</h2>
-<p>(save button goes here)</p>
+<h2>6. Budget and rating</h2>
+<div id="summary"></div>
+
+<h2>7. Checks</h2>
+<ul id="warnings"></ul>
+
+<h2>8. Roster as text</h2>
+<p>Copy this to keep a record. Saving to the campaign Sheet is not built yet.</p>
+<textarea id="out" rows="24" cols="90" readonly></textarea>
+
+</div>
+
+<script>
+// ---------- helpers ----------
+const START_SILVER = 1000;
+const MAX_FIGHTERS = 15;
+
+// Reads CSV text into an array of objects keyed by header name.
+// Handles quoted cells, commas and line breaks inside quotes, and "" for a quote.
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { cell += '"'; i++; }
+        else inQuotes = false;
+      } else cell += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); cell = "";
+      if (row.some(x => x !== "")) rows.push(row);
+      row = [];
+    } else cell += c;
+  }
+  row.push(cell);
+  if (row.some(x => x !== "")) rows.push(row);
+  const header = rows.shift().map(h => h.trim());
+  return rows.map(r => {
+    const o = {};
+    header.forEach((h, i) => o[h] = (r[i] || "").trim());
+    return o;
+  });
+}
+
+async function loadCSV(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(path + " (" + res.status + ")");
+  return parseCSV(await res.text());
+}
+
+function num(v) { const n = parseFloat(v); return isNaN(n) ? 0 : n; }
+function d6() { return 1 + Math.floor(Math.random() * 6); }
+
+// "60+d6" -> 60 + a d6 roll; "d6" -> a d6 roll; "0" -> 0
+function rollStartingXP(text) {
+  const t = (text || "").replace(/\s/g, "");
+  const m = t.match(/^(\d*)\+?(d6)?$/i);
+  if (!m) return 0;
+  return (m[1] ? parseInt(m[1], 10) : 0) + (m[2] ? d6() : 0);
+}
+
+// "0-3" -> 3 ; blank -> null (no limit)
+function maxFromLimit(text) {
+  const m = (text || "").match(/0\s*-\s*(\d+)/);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+
+// ---------- state ----------
+let UNITS = [], EQUIP = [];
+let faction = "";
+let fighters = [];   // { id, unit, name, xp, wargear: [itemKey, ...] }
+let nextId = 1;
+
+const unitByName = name => UNITS.find(u => u.Name === name);
+const priceByKey = {};   // Item Key -> silver
+const itemByKey = {};    // Item Key -> first equipment row
+
+function unitCost(f) { return num(unitByName(f.unit)["Cost"]); }
+function wargearCost(f) { return f.wargear.reduce((s, k) => s + (priceByKey[k] || 0), 0); }
+
+// ---------- rendering ----------
+function renderUnitPicker() {
+  const sel = document.getElementById("unit");
+  const list = UNITS.filter(u => u["Faction"] === faction);
+  sel.innerHTML = list.map(u =>
+    `<option value="${esc(u["Unit Name"])}">${esc(u["Unit Name"])} (${esc(u["Type"])}, ${num(u["Cost"])}s)</option>`
+  ).join("");
+}
+
+function wargearOptions(unit) {
+  const code = unit["Wargear Allowed"];
+  if (!code || code === "X0") return [];
+  const seen = new Set();
+  return EQUIP.filter(e => e["Code"] === code && !seen.has(e["Item Key"]) && seen.add(e["Item Key"]));
+}
+
+function renderFighters() {
+  const box = document.getElementById("fighters");
+  if (!fighters.length) { box.innerHTML = "<p>No fighters yet.</p>"; return; }
+  box.innerHTML = fighters.map(f => {
+    const u = unitByName(f.unit);
+    const opts = wargearOptions(u);
+    const picker = opts.length
+      ? `<select id="wg-${f.id}">${opts.map(e =>
+          `<option value="${esc(e["Item Key"])}">${esc(e["Name"])} (${esc(e["Category"])}, ${num(e["Silver"])}s${e["Rare Limit"] ? ", rare " + esc(e["Rare Limit"]) : ""})</option>`
+        ).join("")}</select> <button data-act="addgear" data-id="${f.id}">Add wargear</button>`
+      : "No wargear available for this unit.";
+    const owned = f.wargear.length
+      ? "<ul>" + f.wargear.map((k, i) =>
+          `<li>${esc(itemByKey[k]["Name"])} - ${num(itemByKey[k]["Silver"])}s <button data-act="delgear" data-id="${f.id}" data-i="${i}">Remove</button></li>`
+        ).join("") + "</ul>"
+      : "";
+    const fixed = u["Fixed Weapon / Included Gear"] ? `<br>Included: ${esc(u["Fixed Weapon / Included Gear"])}` : "";
+    return `<p><b>${esc(u["Unit Name"])}</b> (${esc(u["Type"])}) - cost ${unitCost(f)}s
+      <button data-act="delfighter" data-id="${f.id}">Remove fighter</button><br>
+      Name: <input id="nm-${f.id}" value="${esc(f.name)}" data-act="rename" data-id="${f.id}">
+      Starting XP: <input type="number" min="0" style="width:4em" value="${f.xp}" data-act="setxp" data-id="${f.id}">
+      Stats: Move ${esc(u["Move"])}, Blade ${esc(u["Blade"])}, Bow ${esc(u["Bow"])}, Armor ${esc(u["Armor"])},
+      Initiative ${esc(u["Initiative"])}, Willpower ${esc(u["Willpower"])}, Life ${esc(u["Life"])}${fixed}<br>
+      Wargear: ${picker}${owned}</p>`;
+  }).join("");
+}
+
+function computeTotals() {
+  let fighterCost = 0, gearCost = 0, xp = 0;
+  fighters.forEach(f => { fighterCost += unitCost(f); gearCost += wargearCost(f); xp += num(f.xp); });
+  const spent = fighterCost + gearCost;
+  return { fighterCost, gearCost, xp, spent, left: START_SILVER - spent, rating: spent + xp };
+}
+
+function computeWarnings() {
+  const w = [];
+  const count = t => fighters.filter(f => unitByName(f.unit)["Type"] === t).length;
+  const t = computeTotals();
+  if (fighters.length > MAX_FIGHTERS) w.push(`More than ${MAX_FIGHTERS} fighters (${fighters.length}).`);
+  if (count("Leader") !== 1) w.push(`You need exactly 1 Leader (you have ${count("Leader")}).`);
+  if (count("Champion") > 3) w.push(`At most 3 Champions (you have ${count("Champion")}).`);
+  if (count("Henchman") < 5) w.push(`At least 5 Henchmen (you have ${count("Henchman")}).`);
+  if (count("Brute") > 2) w.push(`At most 2 Brutes (you have ${count("Brute")}).`);
+  if (count("Beast") > 3) w.push(`At most 3 Beasts (you have ${count("Beast")}).`);
+  // per-unit limits such as 0-1
+  const names = [...new Set(fighters.map(f => f.unit))];
+  names.forEach(n => {
+    const max = maxFromLimit(unitByName(n)["Unit Limit"]);
+    const c = fighters.filter(f => f.unit === n).length;
+    if (max !== null && c > max) w.push(`${n}: limit ${unitByName(n)["Unit Limit"]}, you have ${c}.`);
+  });
+  // Rare items: limits how many fighters can carry that item
+  const keys = [...new Set(fighters.flatMap(f => f.wargear))];
+  keys.forEach(k => {
+    const max = maxFromLimit(itemByKey[k]["Rare Limit"]);
+    const c = fighters.filter(f => f.wargear.includes(k)).length;
+    if (max !== null && c > max) w.push(`${itemByKey[k]["Name"]}: Rare ${itemByKey[k]["Rare Limit"]}, carried by ${c} fighters.`);
+  });
+  if (t.left < 0) w.push(`Over budget by ${-t.left} silver.`);
+  return w;
+}
+
+function rosterText() {
+  const t = computeTotals();
+  const lines = [`Faction: ${faction}`, "Origin: (not recorded)", ""];
+  fighters.forEach(f => {
+    const u = unitByName(f.unit);
+    lines.push(`${f.name} - ${u["Unit Name"]} (${u["Type"]}), cost ${unitCost(f)}s, starting XP ${f.xp}`);
+    f.wargear.forEach(k => lines.push(`    ${itemByKey[k]["Name"]} (${num(itemByKey[k]["Silver"])}s)`));
+    if (u["Fixed Weapon / Included Gear"]) lines.push(`    Included: ${u["Fixed Weapon / Included Gear"]}`);
+  });
+  lines.push("", `Fighters: ${t.fighterCost}s   Wargear: ${t.gearCost}s   Spent: ${t.spent}s`,
+    `Silver left (goes to the stash): ${t.left}s`, `Total XP: ${t.xp}`, `Warband rating: ${t.rating}`);
+  return lines.join("\n");
+}
+
+function renderTotals() {
+  const t = computeTotals();
+  document.getElementById("summary").innerHTML =
+    `<p>Fighters: ${fighters.length} of ${MAX_FIGHTERS}<br>
+     Fighter cost: ${t.fighterCost}s<br>
+     Wargear cost: ${t.gearCost}s<br>
+     Spent: ${t.spent}s of ${START_SILVER}s<br>
+     Silver left (goes to the stash): ${t.left}s<br>
+     Total starting XP: ${t.xp}<br>
+     <b>Warband rating: ${t.rating}</b> (fighters + wargear + XP; the stash is not counted)</p>`;
+  const w = computeWarnings();
+  document.getElementById("warnings").innerHTML = w.length
+    ? w.map(x => `<li>${esc(x)}</li>`).join("")
+    : "<li>No problems found.</li>";
+  document.getElementById("out").value = rosterText();
+}
+
+function renderAll() { renderFighters(); renderTotals(); }
+
+// ---------- events ----------
+document.getElementById("faction").addEventListener("change", e => {
+  if (fighters.length && !confirm("Changing faction clears your fighters. Continue?")) {
+    e.target.value = faction; return;
+  }
+  faction = e.target.value; fighters = []; renderUnitPicker(); renderAll();
+});
+
+document.getElementById("addUnit").addEventListener("click", () => {
+  const name = document.getElementById("unit").value;
+  if (!name) return;
+  const u = UNITS.find(x => x["Unit Name"] === name);
+  const n = fighters.filter(f => f.unit === name).length + 1;
+  fighters.push({ id: nextId++, unit: name, name: name + " " + n, xp: rollStartingXP(u["Starting XP"]), wargear: [] });
+  renderAll();
+});
+
+document.getElementById("fighters").addEventListener("click", e => {
+  const act = e.target.dataset.act, id = parseInt(e.target.dataset.id, 10);
+  if (!act) return;
+  const f = fighters.find(x => x.id === id);
+  if (act === "delfighter") fighters = fighters.filter(x => x.id !== id);
+  else if (act === "addgear") f.wargear.push(document.getElementById("wg-" + id).value);
+  else if (act === "delgear") f.wargear.splice(parseInt(e.target.dataset.i, 10), 1);
+  else return;
+  renderAll();
+});
+
+document.getElementById("fighters").addEventListener("change", e => {
+  const act = e.target.dataset.act, id = parseInt(e.target.dataset.id, 10);
+  const f = fighters.find(x => x.id === id);
+  if (act === "rename") f.name = e.target.value;
+  else if (act === "setxp") f.xp = num(e.target.value);
+  else return;
+  renderTotals();   // totals only, so the input keeps focus
+});
+
+// ---------- start ----------
+(async function () {
+  try {
+    const [u, e] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv")]);
+    UNITS = u.map(r => Object.assign({ Name: r["Unit Name"] }, r));
+    EQUIP = e;
+    EQUIP.forEach(r => {
+      if (!r["Item Key"]) return;
+      if (!(r["Item Key"] in itemByKey)) { itemByKey[r["Item Key"]] = r; priceByKey[r["Item Key"]] = num(r["Silver"]); }
+    });
+    const factions = [...new Set(UNITS.map(x => x["Faction"]))];
+    document.getElementById("faction").innerHTML = factions.map(x => `<option>${esc(x)}</option>`).join("");
+    faction = factions[0];
+    renderUnitPicker(); renderAll();
+    document.getElementById("status").hidden = true;
+    document.getElementById("app").hidden = false;
+  } catch (err) {
+    document.getElementById("status").textContent =
+      "Could not load the data files: " + err.message +
+      ". If you opened this file directly from your computer, run a local server instead (python -m http.server).";
+  }
+})();
+</script>
 </body>
 </html>
