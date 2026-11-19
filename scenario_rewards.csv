@@ -1,0 +1,14 @@
+Scenario,Source,Trigger,Recipient,XP,Silver,Other,Counts As Treasure Token?,Rules Page (pdf)
+General,Claimed Treasure,"Each treasure token a warband claims in a battle (held at the end, escaped, or collected from the battlefield by the winner)",Warband,,d3x5 each (unless the scenario says otherwise),Paid in Aftermath step 5 (Collect Income),Y,"37, 152"
+A Deadly Encounter,First Blood,First fighter to take down an enemy fighter with an attack,Fighter,10,,,N,38
+A Deadly Encounter,Battle for the Tower (twist 2),Winner of the battle,Warband,,,1 exploration re-roll in the aftermath,N,39
+A Deadly Encounter,The Chest (twist 6),Winner of the battle claims the chest,Warband,,Chest table: 0 / d6x10 / 3d6x5,See scenario_tables.csv,N,39
+Glimmers in the Dark,Escaping with Treasure,Each fighter that escapes with treasure,Fighter,10,,,N,40
+No Quarter,Hold Ground,"Each time a player scores domination marks, each friendly fighter wholly within that quarter",Fighter,1,,"Per fighter, per scoring",N,42
+The Chapel,Chapel Treasure,Each treasure token claimed in this scenario,Warband,,2d6x5 each (overrides d3x5),,Y,44
+The Chapel,First to Step Inside,First fighter to finish a Move wholly within the chapel,Fighter,10,,,N,44
+The Chapel,Prying Off the Sarcophagus Lid (twist 3),The fighter that pries off the lid,Fighter,2d6,,Only if the sarcophagus twist is in play,N,44
+The Chapel,"Coin Purse (twist 3 table, 5)",Fighter that pried off the lid picks up the purse,Warband (via fighter),,3d6x5,Treated as a treasure token,Y,45
+The Chapel,"Heirloom (twist 3 table, 6)",Winning warband at the end of the battle,Warband,,,One roll on the Relic table,N,45
+Street of Death,To the Hit or the Hitter,"The Hit escapes (Hit earns it), or an enemy fighter takes the Hit down (that fighter earns it)",Fighter,20,,,N,46
+The Find,Escaping with Treasure,Each fighter that escapes with treasure,Fighter,10,,,N,48

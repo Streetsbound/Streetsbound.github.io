@@ -1,0 +1,16 @@
+Scenario,Table,Roll,Result,Effect,Silver,Treasure Token?,Rules Page (pdf)
+General,Reinforcements Table,1-2,"No Sight, No Sound",The fighter does not arrive this round; roll again next round.,,,37
+General,Reinforcements Table,3-5,Arrival,"Set up the fighter within 3"" horizontally of a battlefield edge connected to the entry point and more than 6"" from all enemy fighters.",,,37
+General,Reinforcements Table,6,Outflank,"Set up the fighter anywhere wholly within 3"" of a battlefield edge and more than 6"" from all enemy fighters.",,,37
+A Deadly Encounter,Chest (twist 6),1,Empty All Along,The chest is empty.,0,N,39
+A Deadly Encounter,Chest (twist 6),2-5,A Modest Find,The chest holds d6x10 silver.,d6x10,N,39
+A Deadly Encounter,Chest (twist 6),6,A Stash of Silver,The chest holds 3d6x5 silver.,3d6x5,N,39
+The Chapel,Desecrated Ground (twist 2),1-2,Light Rain,No effect. At the start of each later round roll a d6; on 4+ Heavy Rain begins.,,,45
+The Chapel,Desecrated Ground (twist 2),3,Heavy Rain,"Fighters see only 12""; subtract 1 from misfire rolls (min 1).",,,45
+The Chapel,Desecrated Ground (twist 2),4,Grass Sprouts,A fighter finishing a move on the floor within the chapel heals 1 life. Demon and Undead fighters suffer 1 damage instead.,,,45
+The Chapel,Desecrated Ground (twist 2),5,Blood Frenzy,"For the rest of the battle, add 1 to the Attacks of melee weapons for fighters within the chapel.",,,45
+The Chapel,Desecrated Ground (twist 2),6,Thunder Claps,"The round ends immediately (resolve End of Round). The next time a fighter is taken down within the chapel, roll on this table again.",,,45
+The Chapel,Sarcophagus (twist 3),1,Unholy Curse,The fighter that pried off the lid suffers d6 damage. Each other fighter within the chapel must pass a Willpower test or suffer d6 damage. Demon and Undead fighters are unaffected in both cases.,,,45
+The Chapel,Sarcophagus (twist 3),2-4,Rotten Black Mulch,Nothing inside but foul mulch. No reward.,0,N,45
+The Chapel,Sarcophagus (twist 3),5,Coin Purse,"The fighter that pried off the lid picks up a treasure token worth 3d6x5 silver. If already holding treasure, they drop it and pick this one up.",3d6x5,Y,45
+The Chapel,Sarcophagus (twist 3),6,Heirloom,At the end of the battle the winning warband can roll on the Relic table.,,N (relic roll),45

@@ -1,0 +1,299 @@
+Faction,Code,Armoury List,Category,Name,Silver,Range,Attacks,Rend,Damage,Critical Damage,Weapon Traits,Armour Value,Item Keyword,Rare Limit,Rules Text,Item Key
+Guild Mercenaries,G1,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Guild Mercenaries|Axe
+Guild Mercenaries,G1,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Club/Mace/Hammer
+Guild Mercenaries,G1,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Guild Mercenaries|Dagger
+Guild Mercenaries,G1,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Guild Mercenaries|Flail
+Guild Mercenaries,G1,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Halberd
+Guild Mercenaries,G1,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Guild Mercenaries|Heavy Axe
+Guild Mercenaries,G1,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Spear
+Guild Mercenaries,G1,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Guild Mercenaries|Sword
+Guild Mercenaries,G1,Main List,Melee Weapon,Warhammer,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Guild Mercenaries|Warhammer
+Guild Mercenaries,G1,Main List,Melee Weapon,Zweihander,42,,3,-1,2,d3+1,"Guard, Two-handed, Unwieldy",,,,,Guild Mercenaries|Zweihander
+Guild Mercenaries,G1,Main List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Guild Mercenaries|Blackpowder Pistol
+Guild Mercenaries,G1,Main List,Ranged Weapon,Blackpowder Rifle,24,"18""",1,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blackpowder Rifle
+Guild Mercenaries,G1,Main List,Ranged Weapon,Blunderbuss,14,"8""",d3,-,1,d3,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blunderbuss
+Guild Mercenaries,G1,Main List,Ranged Weapon,Crossbow,20,"20""",1,-1,1,d6,"Reload, Two-handed",,,,,Guild Mercenaries|Crossbow
+Guild Mercenaries,G1,Main List,Ranged Weapon,Hand Crossbow,16,"12""",1,-,1,d6,Reload,,,,,Guild Mercenaries|Hand Crossbow
+Guild Mercenaries,G1,Main List,Ranged Weapon,Long Bow,26,"28""",1,-1,d3,d6,"Heavy, Two-handed",,,,,Guild Mercenaries|Long Bow
+Guild Mercenaries,G1,Main List,Ranged Weapon,Short Bow,16,"16""",1,-,1,d6,Two-handed,,,,,Guild Mercenaries|Short Bow
+Guild Mercenaries,G1,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Cuirass
+Guild Mercenaries,G1,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Guild Mercenaries|Grappling Hook
+Guild Mercenaries,G1,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Guild Mercenaries,G1,Champion List,Ranged Weapon,Brace of Pistols,30,"12""",2,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Brace of Pistols
+Guild Mercenaries,G1,Champion List,Ranged Weapon,Long Rifle,70,"30""",1,-2,2,d6+2,"Heavy, Misfire, Two-handed",,,,,Guild Mercenaries|Long Rifle
+Guild Mercenaries,G1,Champion List,Ranged Weapon,Repeater Pistol,30,"12""",1,-1,2,d6+1,Misfire,,,,,Guild Mercenaries|Repeater Pistol
+Guild Mercenaries,G1,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Guild Mercenaries|Full-plate
+Guild Mercenaries,G1,Champion List,Item,Guild Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Guild Mercenaries|Guild Banner
+Guild Mercenaries,G1,Champion List,Item,Loyal Companion,20,,,,,,,,Item,0-1,"Each time the bearer makes a melee attack, they can make 1 additional attack with the following weapon: Rend -1, Damage 1, Critical Damage d3, Weapon Traits Natural Weapon. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Guild Mercenaries|Loyal Companion
+Guild Mercenaries,G2,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Guild Mercenaries|Axe
+Guild Mercenaries,G2,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Club/Mace/Hammer
+Guild Mercenaries,G2,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Guild Mercenaries|Dagger
+Guild Mercenaries,G2,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Guild Mercenaries|Flail
+Guild Mercenaries,G2,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Halberd
+Guild Mercenaries,G2,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Guild Mercenaries|Heavy Axe
+Guild Mercenaries,G2,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Spear
+Guild Mercenaries,G2,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Guild Mercenaries|Sword
+Guild Mercenaries,G2,Main List,Melee Weapon,Warhammer,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Guild Mercenaries|Warhammer
+Guild Mercenaries,G2,Main List,Melee Weapon,Zweihander,42,,3,-1,2,d3+1,"Guard, Two-handed, Unwieldy",,,,,Guild Mercenaries|Zweihander
+Guild Mercenaries,G2,Main List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Guild Mercenaries|Blackpowder Pistol
+Guild Mercenaries,G2,Main List,Ranged Weapon,Blackpowder Rifle,24,"18""",1,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blackpowder Rifle
+Guild Mercenaries,G2,Main List,Ranged Weapon,Blunderbuss,14,"8""",d3,-,1,d3,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blunderbuss
+Guild Mercenaries,G2,Main List,Ranged Weapon,Crossbow,20,"20""",1,-1,1,d6,"Reload, Two-handed",,,,,Guild Mercenaries|Crossbow
+Guild Mercenaries,G2,Main List,Ranged Weapon,Hand Crossbow,16,"12""",1,-,1,d6,Reload,,,,,Guild Mercenaries|Hand Crossbow
+Guild Mercenaries,G2,Main List,Ranged Weapon,Long Bow,26,"28""",1,-1,d3,d6,"Heavy, Two-handed",,,,,Guild Mercenaries|Long Bow
+Guild Mercenaries,G2,Main List,Ranged Weapon,Short Bow,16,"16""",1,-,1,d6,Two-handed,,,,,Guild Mercenaries|Short Bow
+Guild Mercenaries,G2,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Cuirass
+Guild Mercenaries,G2,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Guild Mercenaries|Grappling Hook
+Guild Mercenaries,G2,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Guild Mercenaries,G2,Champion List,Ranged Weapon,Brace of Pistols,30,"12""",2,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Brace of Pistols
+Guild Mercenaries,G2,Champion List,Ranged Weapon,Long Rifle,70,"30""",1,-2,2,d6+2,"Heavy, Misfire, Two-handed",,,,,Guild Mercenaries|Long Rifle
+Guild Mercenaries,G2,Champion List,Ranged Weapon,Repeater Pistol,30,"12""",1,-1,2,d6+1,Misfire,,,,,Guild Mercenaries|Repeater Pistol
+Guild Mercenaries,G2,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Guild Mercenaries|Full-plate
+Guild Mercenaries,G2,Champion List,Item,Guild Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Guild Mercenaries|Guild Banner
+Guild Mercenaries,G2,Champion List,Item,Loyal Companion,20,,,,,,,,Item,0-1,"Each time the bearer makes a melee attack, they can make 1 additional attack with the following weapon: Rend -1, Damage 1, Critical Damage d3, Weapon Traits Natural Weapon. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Guild Mercenaries|Loyal Companion
+Guild Mercenaries,G2,Witchhunter List,Item,Lantern/Torch,4,,,,,,,,Held Item,,Worsen the Armour value of enemy Demon and Undead fighters by 1 while they are engaged with any fighters equipped with this item. (Printed as Torchlight/Lantern on the item page.),Guild Mercenaries|Lantern/Torch
+Guild Mercenaries,G2,Witchhunter List,Item,Wooden Stakes,5,,,,,,,,Item,0-1,"Once per battle, while this fighter is engaged in melee with an Undead or Demon fighter that is bloodied, it can use the following bonus action: Drive the Stake [Bonus Action]: Pick an enemy Demon or Undead fighter this fighter is engaged in melee with, that is bloodied, to be the target. Roll a dice. On a 2+ the target is immediately taken down. In the aftermath of battle, this fighter earns 10 bonus experience.",Guild Mercenaries|Wooden Stakes
+Guild Mercenaries,G3,Wizard List,Melee Weapon,Arcane Staff,10,,2,-,1,d3,"Arcane, Off-hand",,,,,Guild Mercenaries|Arcane Staff
+Guild Mercenaries,G3,Wizard List,Melee Weapon,Ensorcelled Weapon,26,,3,-1,1,d3,Arcane,,,,,Guild Mercenaries|Ensorcelled Weapon
+Guild Mercenaries,G3,Wizard List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Guild Mercenaries|Sword
+Guild Mercenaries,G3,Wizard List,Armour,Warded Robes,10,,,,,,,6+,,,"Armour value 6+. Roll a dice each time a fighter equipped with this armour is targeted by a spell cast by an enemy fighter. On a 4+, the spell has no effect on this fighter.",Guild Mercenaries|Warded Robes
+Guild Mercenaries,G3,Wizard List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Guild Mercenaries|Grimoire
+Guild Mercenaries,G4,Cleric List,Melee Weapon,Arcane Staff,10,,2,-,1,d3,"Arcane, Off-hand",,,,,Guild Mercenaries|Arcane Staff
+Guild Mercenaries,G4,Cleric List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Club/Mace/Hammer
+Guild Mercenaries,G4,Cleric List,Melee Weapon,Warhammer,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Guild Mercenaries|Warhammer
+Guild Mercenaries,G4,Cleric List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Cuirass
+Guild Mercenaries,G4,Cleric List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Guild Mercenaries|Full-plate
+Guild Mercenaries,G4,Cleric List,Armour,Warded Robes,10,,,,,,,6+,,,"Armour value 6+. Roll a dice each time a fighter equipped with this armour is targeted by a spell cast by an enemy fighter. On a 4+, the spell has no effect on this fighter.",Guild Mercenaries|Warded Robes
+Guild Mercenaries,G4,Cleric List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Guild Mercenaries|Grimoire
+Guild Mercenaries,G4,Cleric List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Guild Mercenaries,G4,Cleric List,Item,Wooden Stakes,5,,,,,,,,Item,0-1,"Once per battle, while this fighter is engaged in melee with an Undead or Demon fighter that is bloodied, it can use the following bonus action: Drive the Stake [Bonus Action]: Pick an enemy Demon or Undead fighter this fighter is engaged in melee with, that is bloodied, to be the target. Roll a dice. On a 2+ the target is immediately taken down. In the aftermath of battle, this fighter earns 10 bonus experience.",Guild Mercenaries|Wooden Stakes
+Guild Mercenaries,G5,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Guild Mercenaries|Axe
+Guild Mercenaries,G5,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Club/Mace/Hammer
+Guild Mercenaries,G5,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Guild Mercenaries|Dagger
+Guild Mercenaries,G5,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Guild Mercenaries|Flail
+Guild Mercenaries,G5,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Halberd
+Guild Mercenaries,G5,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Guild Mercenaries|Heavy Axe
+Guild Mercenaries,G5,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Spear
+Guild Mercenaries,G5,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Guild Mercenaries|Sword
+Guild Mercenaries,G5,Main List,Melee Weapon,Warhammer,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Guild Mercenaries|Warhammer
+Guild Mercenaries,G5,Main List,Melee Weapon,Zweihander,42,,3,-1,2,d3+1,"Guard, Two-handed, Unwieldy",,,,,Guild Mercenaries|Zweihander
+Guild Mercenaries,G5,Main List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Guild Mercenaries|Blackpowder Pistol
+Guild Mercenaries,G5,Main List,Ranged Weapon,Blackpowder Rifle,24,"18""",1,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blackpowder Rifle
+Guild Mercenaries,G5,Main List,Ranged Weapon,Blunderbuss,14,"8""",d3,-,1,d3,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blunderbuss
+Guild Mercenaries,G5,Main List,Ranged Weapon,Crossbow,20,"20""",1,-1,1,d6,"Reload, Two-handed",,,,,Guild Mercenaries|Crossbow
+Guild Mercenaries,G5,Main List,Ranged Weapon,Hand Crossbow,16,"12""",1,-,1,d6,Reload,,,,,Guild Mercenaries|Hand Crossbow
+Guild Mercenaries,G5,Main List,Ranged Weapon,Long Bow,26,"28""",1,-1,d3,d6,"Heavy, Two-handed",,,,,Guild Mercenaries|Long Bow
+Guild Mercenaries,G5,Main List,Ranged Weapon,Short Bow,16,"16""",1,-,1,d6,Two-handed,,,,,Guild Mercenaries|Short Bow
+Guild Mercenaries,G5,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Cuirass
+Guild Mercenaries,G5,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Guild Mercenaries|Grappling Hook
+Guild Mercenaries,G5,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Guild Mercenaries,G5,Munitions List,Ranged Weapon,Arbalest,90,"24""",1,-2,3,d6+2,"Heavy, Rare 0-1, Two-handed",,,0-1,,Guild Mercenaries|Arbalest
+Guild Mercenaries,G5,Munitions List,Ranged Weapon,Flamethrower,80,Flame,1,-,d3+1,-,"Flame, Rare 0-1, Reload, Scare, Two-handed",,,0-1,,Guild Mercenaries|Flamethrower
+Guild Mercenaries,G5,Munitions List,Ranged Weapon,Fire Bombs,34,"8""",1,-,d3+1,-,"Blast, One-use, Rare 0-1, Scare",,,0-1,,Guild Mercenaries|Fire Bombs
+Guild Mercenaries,G5,Munitions List,Ranged Weapon,Volley Rifle,75,"16""",3,-1,2,d6+1,"Misfire, Rare 0-1, Reload, Two-handed, Volley",,,0-1,,Guild Mercenaries|Volley Rifle
+Guild Mercenaries,G5,Munitions List,Item,Bomb-bolt,25,,,,,,,,Item,0-1,"This item requires the fighter to be equipped with a Crossbow. Once per battle, this fighter can make a Ranged Attack action with the following weapon: Range 20"", Attacks 1, Rend -1, Damage d3+1, Critical Damage -, Weapon Traits Blast.",Guild Mercenaries|Bomb-bolt
+Guild Mercenaries,G6,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Guild Mercenaries|Axe
+Guild Mercenaries,G6,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Club/Mace/Hammer
+Guild Mercenaries,G6,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Guild Mercenaries|Dagger
+Guild Mercenaries,G6,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Guild Mercenaries|Flail
+Guild Mercenaries,G6,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Halberd
+Guild Mercenaries,G6,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Guild Mercenaries|Heavy Axe
+Guild Mercenaries,G6,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Guild Mercenaries|Spear
+Guild Mercenaries,G6,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Guild Mercenaries|Sword
+Guild Mercenaries,G6,Main List,Melee Weapon,Warhammer,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Guild Mercenaries|Warhammer
+Guild Mercenaries,G6,Main List,Melee Weapon,Zweihander,42,,3,-1,2,d3+1,"Guard, Two-handed, Unwieldy",,,,,Guild Mercenaries|Zweihander
+Guild Mercenaries,G6,Main List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Guild Mercenaries|Blackpowder Pistol
+Guild Mercenaries,G6,Main List,Ranged Weapon,Blackpowder Rifle,24,"18""",1,-1,2,d6+1,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blackpowder Rifle
+Guild Mercenaries,G6,Main List,Ranged Weapon,Blunderbuss,14,"8""",d3,-,1,d3,"Misfire, Reload, Two-handed",,,,,Guild Mercenaries|Blunderbuss
+Guild Mercenaries,G6,Main List,Ranged Weapon,Crossbow,20,"20""",1,-1,1,d6,"Reload, Two-handed",,,,,Guild Mercenaries|Crossbow
+Guild Mercenaries,G6,Main List,Ranged Weapon,Hand Crossbow,16,"12""",1,-,1,d6,Reload,,,,,Guild Mercenaries|Hand Crossbow
+Guild Mercenaries,G6,Main List,Ranged Weapon,Long Bow,26,"28""",1,-1,d3,d6,"Heavy, Two-handed",,,,,Guild Mercenaries|Long Bow
+Guild Mercenaries,G6,Main List,Ranged Weapon,Short Bow,16,"16""",1,-,1,d6,Two-handed,,,,,Guild Mercenaries|Short Bow
+Guild Mercenaries,G6,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Cuirass
+Guild Mercenaries,G6,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Guild Mercenaries|Grappling Hook
+Guild Mercenaries,G6,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Guild Mercenaries,G7,Ogre List,Melee Weapon,Ogre Blade,36,,3,-1,2,d3+1,Off-hand,,,,,Guild Mercenaries|Ogre Blade
+Guild Mercenaries,G7,Ogre List,Melee Weapon,Ogre Great Weapon,50,,3,-2,3,d3+2,Two-handed,,,,,Guild Mercenaries|Ogre Great Weapon
+Guild Mercenaries,G7,Ogre List,Melee Weapon,Ogre Mace,38,,3,-1,2,d3+1,"Bludgeon, Off-hand",,,,,Guild Mercenaries|Ogre Mace
+Guild Mercenaries,G7,Ogre List,Ranged Weapon,Ogre Arbalest,90,"24""",1,-2,3,d6+2,"Rare 0-1, Reload, Two-handed",,,0-1,,Guild Mercenaries|Ogre Arbalest
+Guild Mercenaries,G7,Ogre List,Ranged Weapon,Ogre Cannon,112,"18""",1,-3,d6+1,-,"Blast, Misfire, Rare 0-1, Reload, Two-handed",,,0-1,,Guild Mercenaries|Ogre Cannon
+Guild Mercenaries,G7,Ogre List,Ranged Weapon,Ogre Pistol,30,"16""",1,-1,3,d6+2,"Misfire, Reload",,,,,Guild Mercenaries|Ogre Pistol
+Guild Mercenaries,G7,Ogre List,Armour,Ogre Armour,30,,,,,,,5+,,,Armour value 5+.,Guild Mercenaries|Ogre Armour
+Guild Mercenaries,G7,Ogre List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Guild Mercenaries|Shield
+Verminkin,V1,Practitioner List,Melee Weapon,Arcane Staff,10,,2,-,1,d3,"Arcane, Off-hand",,,,,Verminkin|Arcane Staff
+Verminkin,V1,Practitioner List,Melee Weapon,Ensorcelled Weapon,26,,3,-1,1,d3,Arcane,,,,,Verminkin|Ensorcelled Weapon
+Verminkin,V1,Practitioner List,Armour,Warded Robes,10,,,,,,,6+,,,"Armour value 6+. Roll a dice each time a fighter equipped with this armour is targeted by a spell cast by an enemy fighter. On a 4+, the spell has no effect on this fighter.",Verminkin|Warded Robes
+Verminkin,V1,Practitioner List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Verminkin|Grimoire
+Verminkin,V1,Practitioner List,Item,Ensorcelled Bell,10,,,,,,,,Item,0-1,"Once per battle, you can re-roll a miscast roll made for this fighter.",Verminkin|Ensorcelled Bell
+Verminkin,V2,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Verminkin|Axe
+Verminkin,V2,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Verminkin|Club/Mace/Hammer
+Verminkin,V2,Main List,Melee Weapon,Dagger/Punch Dagger,10,,3,-,1,d3,Off-hand,,,,,Verminkin|Dagger/Punch Dagger
+Verminkin,V2,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Verminkin|Flail
+Verminkin,V2,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Verminkin|Halberd
+Verminkin,V2,Main List,Melee Weapon,Heavy-Flail,38,,3,-1,2,d3+1,"Two-handed, Unwieldy, Wrap",,,,,Verminkin|Heavy-Flail
+Verminkin,V2,Main List,Melee Weapon,Iron Claw,12,,4,-,1,1,Off-hand,,,,,Verminkin|Iron Claw
+Verminkin,V2,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Verminkin|Spear
+Verminkin,V2,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Verminkin|Sword
+Verminkin,V2,Main List,Ranged Weapon,Orb Bombs,32,"8""",1,-,d3+1,-,"Blast, One-use, Rare 0-5",,,0-5,,Verminkin|Orb Bombs
+Verminkin,V2,Main List,Ranged Weapon,Sling,12,"16""",1,-,1,d3,-,,,,,Verminkin|Sling
+Verminkin,V2,Main List,Ranged Weapon,Throwing Stars,10,"8""",1,-,1,d3,Poison,,,,,Verminkin|Throwing Stars
+Verminkin,V2,Main List,Item,Gas Mask,10,,,,,,,,Item,0-6,This fighter cannot be poisoned.,Verminkin|Gas Mask
+Verminkin,V2,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Verminkin|Grappling Hook
+Verminkin,V2,Main List,Item,Net,30,,,,,,,,Held Item,0-3,"Once per battle, at the start of a melee attack action in which this fighter is either the attacking or defending fighter, they can throw the net. To do so, they take an Initiative test. If passed, the enemy fighter becomes entwined. While a fighter is entwined, subtract 1 from the Attacks value of their melee weapons (off-hand attacks are unaffected). Each time an entwined fighter is activated, they can take an Initiative test, if passed, they are no longer entwined.",Verminkin|Net
+Verminkin,V2,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Verminkin|Shield
+Verminkin,V2,Main List,Item,Smoke Bomb,20,,,,,,,,Item,0-3,"Once per battle, while this fighter is engaged in melee, they can use the following bonus action: Drop Smoke Bomb [Bonus Action]: Remove this fighter from the battlefield and set it up again wholly within 6"" of its previous position and not engaged in melee.",Verminkin|Smoke Bomb
+Verminkin,V2,Champion List,Melee Weapon,Ensorcelled Halberd,48,,3,-1,1,d3+1,"Arcane, Brace, Polearm, Two-handed",,,,,Verminkin|Ensorcelled Halberd
+Verminkin,V2,Champion List,Melee Weapon,Poison Blade,20,,3,-1,1,d3,"Guard, Off-hand, Poison",,,,,Verminkin|Poison Blade
+Verminkin,V2,Champion List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Verminkin|Blackpowder Pistol
+Verminkin,V2,Champion List,Ranged Weapon,Repeater Pistol,30,"12""",1,-1,2,d6+1,Misfire,,,,,Verminkin|Repeater Pistol
+Verminkin,V2,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Verminkin|Full-plate
+Verminkin,V2,Champion List,Item,Bomb Rat,25,,,,,,,,Item,0-1,"Once per battle, while this fighter is not engaged in melee, they can make the following bonus action: Set Up Bomb Rat [Bonus Action]: A Giant Rat is summoned and added to the commanding player's warband. Set up the Giant Rat fighter within 3"" of the fighter and choose a number between 1 and 6. This number is the fuse length. Use a dice placed next to the Giant Rat to track the fuse length. Each time that Giant Rat activates, roll a dice. If the roll is greater than the fuse length, the bomb detonates. If the roll is equal or less than the fuse length, the Giant Rat is activated as normal and the fuse length is reduced by 1 (to a minimum of 1). When the bomb detonates, the blast template is centred on the Giant Rat. Each other fighter in the template is hit with the following attack (Rend -2, Damage d3), then the Giant Rat is taken down (it does not count towards flee tests). If the Giant Rat is taken down and the bomb has not yet detonated, roll a dice as above to see if it detonates or not.",Verminkin|Bomb Rat
+Verminkin,V2,Champion List,Item,Clan Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Verminkin|Clan Banner
+Verminkin,V3,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Verminkin|Axe
+Verminkin,V3,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Verminkin|Club/Mace/Hammer
+Verminkin,V3,Main List,Melee Weapon,Dagger/Punch Dagger,10,,3,-,1,d3,Off-hand,,,,,Verminkin|Dagger/Punch Dagger
+Verminkin,V3,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Verminkin|Flail
+Verminkin,V3,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Verminkin|Halberd
+Verminkin,V3,Main List,Melee Weapon,Heavy-Flail,38,,3,-1,2,d3+1,"Two-handed, Unwieldy, Wrap",,,,,Verminkin|Heavy-Flail
+Verminkin,V3,Main List,Melee Weapon,Iron Claw,12,,4,-,1,1,Off-hand,,,,,Verminkin|Iron Claw
+Verminkin,V3,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Verminkin|Spear
+Verminkin,V3,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Verminkin|Sword
+Verminkin,V3,Main List,Ranged Weapon,Orb Bombs,32,"8""",1,-,d3+1,-,"Blast, One-use, Rare 0-5",,,0-5,,Verminkin|Orb Bombs
+Verminkin,V3,Main List,Ranged Weapon,Sling,12,"16""",1,-,1,d3,-,,,,,Verminkin|Sling
+Verminkin,V3,Main List,Ranged Weapon,Throwing Stars,10,"8""",1,-,1,d3,Poison,,,,,Verminkin|Throwing Stars
+Verminkin,V3,Main List,Item,Gas Mask,10,,,,,,,,Item,0-6,This fighter cannot be poisoned.,Verminkin|Gas Mask
+Verminkin,V3,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Verminkin|Grappling Hook
+Verminkin,V3,Main List,Item,Net,30,,,,,,,,Held Item,0-3,"Once per battle, at the start of a melee attack action in which this fighter is either the attacking or defending fighter, they can throw the net. To do so, they take an Initiative test. If passed, the enemy fighter becomes entwined. While a fighter is entwined, subtract 1 from the Attacks value of their melee weapons (off-hand attacks are unaffected). Each time an entwined fighter is activated, they can take an Initiative test, if passed, they are no longer entwined.",Verminkin|Net
+Verminkin,V3,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Verminkin|Shield
+Verminkin,V3,Main List,Item,Smoke Bomb,20,,,,,,,,Item,0-3,"Once per battle, while this fighter is engaged in melee, they can use the following bonus action: Drop Smoke Bomb [Bonus Action]: Remove this fighter from the battlefield and set it up again wholly within 6"" of its previous position and not engaged in melee.",Verminkin|Smoke Bomb
+Verminkin,V3,Champion List,Melee Weapon,Ensorcelled Halberd,48,,3,-1,1,d3+1,"Arcane, Brace, Polearm, Two-handed",,,,,Verminkin|Ensorcelled Halberd
+Verminkin,V3,Champion List,Melee Weapon,Poison Blade,20,,3,-1,1,d3,"Guard, Off-hand, Poison",,,,,Verminkin|Poison Blade
+Verminkin,V3,Champion List,Ranged Weapon,Blackpowder Pistol,18,"12""",1,-1,2,d6+1,"Misfire, Reload",,,,,Verminkin|Blackpowder Pistol
+Verminkin,V3,Champion List,Ranged Weapon,Repeater Pistol,30,"12""",1,-1,2,d6+1,Misfire,,,,,Verminkin|Repeater Pistol
+Verminkin,V3,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Verminkin|Full-plate
+Verminkin,V3,Champion List,Item,Bomb Rat,25,,,,,,,,Item,0-1,"Once per battle, while this fighter is not engaged in melee, they can make the following bonus action: Set Up Bomb Rat [Bonus Action]: A Giant Rat is summoned and added to the commanding player's warband. Set up the Giant Rat fighter within 3"" of the fighter and choose a number between 1 and 6. This number is the fuse length. Use a dice placed next to the Giant Rat to track the fuse length. Each time that Giant Rat activates, roll a dice. If the roll is greater than the fuse length, the bomb detonates. If the roll is equal or less than the fuse length, the Giant Rat is activated as normal and the fuse length is reduced by 1 (to a minimum of 1). When the bomb detonates, the blast template is centred on the Giant Rat. Each other fighter in the template is hit with the following attack (Rend -2, Damage d3), then the Giant Rat is taken down (it does not count towards flee tests). If the Giant Rat is taken down and the bomb has not yet detonated, roll a dice as above to see if it detonates or not.",Verminkin|Bomb Rat
+Verminkin,V3,Champion List,Item,Clan Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Verminkin|Clan Banner
+Verminkin,V3,Sparkseer List,Melee Weapon,Spark-Drill,62,,3,-3,1,d3+1,"Arcane, Two-handed",,,,,Verminkin|Spark-Drill
+Verminkin,V3,Sparkseer List,Ranged Weapon,Arc-Lightning Gun,90,"18""",6,-,1,d3,"Arcane, Heavy, Misfire, Rare 0-1, Two-handed, Volley",,,0-1,,Verminkin|Arc-Lightning Gun
+Verminkin,V3,Sparkseer List,Ranged Weapon,Rocket Launcher,75,"30""",1,-1,d6+1,-,"Blast, Heavy, Misfire, One-use, Rare 0-1, Two-handed",,,0-1,,Verminkin|Rocket Launcher
+Verminkin,V3,Sparkseer List,Ranged Weapon,Flame-Canister,50,Flame,1,-,d3+1,-,"Flame, One-use, Rare 0-2, Scare",,,0-2,,Verminkin|Flame-Canister
+Verminkin,V3,Sparkseer List,Ranged Weapon,Long Rifle,70,"30""",1,-2,2,d6+2,"Heavy, Misfire, Two-handed",,,,,Verminkin|Long Rifle
+Verminkin,V3,Sparkseer List,Item,Periscope,20,,,,,,,,Item,0-1,"While this fighter hasn't made a move in the same activation, add 5"" to the Range value of their two-handed ranged weapons (excluding those with the Flame weapon trait).",Verminkin|Periscope
+Verminkin,V4,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Verminkin|Axe
+Verminkin,V4,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Verminkin|Club/Mace/Hammer
+Verminkin,V4,Main List,Melee Weapon,Dagger/Punch Dagger,10,,3,-,1,d3,Off-hand,,,,,Verminkin|Dagger/Punch Dagger
+Verminkin,V4,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Verminkin|Flail
+Verminkin,V4,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Verminkin|Halberd
+Verminkin,V4,Main List,Melee Weapon,Heavy-Flail,38,,3,-1,2,d3+1,"Two-handed, Unwieldy, Wrap",,,,,Verminkin|Heavy-Flail
+Verminkin,V4,Main List,Melee Weapon,Iron Claw,12,,4,-,1,1,Off-hand,,,,,Verminkin|Iron Claw
+Verminkin,V4,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Verminkin|Spear
+Verminkin,V4,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Verminkin|Sword
+Verminkin,V4,Main List,Ranged Weapon,Orb Bombs,32,"8""",1,-,d3+1,-,"Blast, One-use, Rare 0-5",,,0-5,,Verminkin|Orb Bombs
+Verminkin,V4,Main List,Ranged Weapon,Sling,12,"16""",1,-,1,d3,-,,,,,Verminkin|Sling
+Verminkin,V4,Main List,Ranged Weapon,Throwing Stars,10,"8""",1,-,1,d3,Poison,,,,,Verminkin|Throwing Stars
+Verminkin,V4,Main List,Item,Gas Mask,10,,,,,,,,Item,0-6,This fighter cannot be poisoned.,Verminkin|Gas Mask
+Verminkin,V4,Main List,Item,Grappling Hook,5,,,,,,,,Item,0-2,This fighter can climb high walls in the same manner as ladders.,Verminkin|Grappling Hook
+Verminkin,V4,Main List,Item,Net,30,,,,,,,,Held Item,0-3,"Once per battle, at the start of a melee attack action in which this fighter is either the attacking or defending fighter, they can throw the net. To do so, they take an Initiative test. If passed, the enemy fighter becomes entwined. While a fighter is entwined, subtract 1 from the Attacks value of their melee weapons (off-hand attacks are unaffected). Each time an entwined fighter is activated, they can take an Initiative test, if passed, they are no longer entwined.",Verminkin|Net
+Verminkin,V4,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Verminkin|Shield
+Verminkin,V4,Main List,Item,Smoke Bomb,20,,,,,,,,Item,0-3,"Once per battle, while this fighter is engaged in melee, they can use the following bonus action: Drop Smoke Bomb [Bonus Action]: Remove this fighter from the battlefield and set it up again wholly within 6"" of its previous position and not engaged in melee.",Verminkin|Smoke Bomb
+Verminkin,V5,Rat-Mutant List,Melee Weapon,Rat-Mutant Blade,36,,3,-1,2,d3+1,Off-hand,,,,,Verminkin|Rat-Mutant Blade
+Verminkin,V5,Rat-Mutant List,Melee Weapon,Spark-Drill,62,,3,-3,1,d3+1,"Arcane, Two-handed",,,,,Verminkin|Spark-Drill
+Verminkin,V5,Rat-Mutant List,Melee Weapon,Spark-Powered Fists,60,,3,-2,2,d3+1,"Arcane, Bludgeon, Two-handed",,,,,Verminkin|Spark-Powered Fists
+Verminkin,V5,Rat-Mutant List,Ranged Weapon,Heavy Gatling Gun,110,"16""",3,-1,2,d6+1,"Heavy, Misfire, Rare 0-1, Two-handed, Volley",,,0-1,,Verminkin|Heavy Gatling Gun
+Verminkin,V5,Rat-Mutant List,Ranged Weapon,Orb Launcher,100,"20""",1,-,d3+1,-,"Blast, Misfire, Rare 0-1, Reload, Two-handed",,,0-1,,Verminkin|Orb Launcher
+Verminkin,V5,Rat-Mutant List,Ranged Weapon,Flame-Canister,50,Flame,1,-,d3+1,-,"Flame, One-use, Rare 0-2, Scare",,,0-2,,Verminkin|Flame-Canister
+Verminkin,V5,Rat-Mutant List,Armour,Heavy Plating,30,,,,,,,5+,,,Armour value 5+. Subtract 1 from the Move value of fighters equipped with this armour.,Verminkin|Heavy Plating
+Verminkin,V6,Contraption List,Melee Weapon,Dagger/Punch Dagger,10,,3,-,1,d3,Off-hand,,,,,Verminkin|Dagger/Punch Dagger
+Verminkin,V6,Contraption List,Ranged Weapon,Arc-Lightning Gun,90,"18""",6,-,1,d3,"Arcane, Heavy, Misfire, Rare 0-1, Two-handed, Volley",,,0-1,,Verminkin|Arc-Lightning Gun
+Verminkin,V6,Contraption List,Ranged Weapon,Flame-Canister,50,Flame,1,-,d3+1,-,"Flame, One-use, Rare 0-2, Scare",,,0-2,,Verminkin|Flame-Canister
+Verminkin,V6,Contraption List,Item,Wheel-Spikes,50,,,,,,,,Item,,Improve the Rend value by 1 on this fighter's Crushing Bulk melee weapon and the attack dealt by the 'Splat!' special rule.,Verminkin|Wheel-Spikes
+Death Covens,D1,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Death Covens|Axe
+Death Covens,D1,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Death Covens|Club/Mace/Hammer
+Death Covens,D1,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Death Covens|Dagger
+Death Covens,D1,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Death Covens|Flail
+Death Covens,D1,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Death Covens|Halberd
+Death Covens,D1,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Death Covens|Spear
+Death Covens,D1,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Death Covens|Sword
+Death Covens,D1,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Death Covens|Cuirass
+Death Covens,D1,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Death Covens|Shield
+Death Covens,D1,Champion List,Melee Weapon,Cursed Blade,40,,3,-1,1,d3,"Arcane, Guard, Off-hand, Poison",,,,,Death Covens|Cursed Blade
+Death Covens,D1,Champion List,Melee Weapon,Great Mace,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Death Covens|Great Mace
+Death Covens,D1,Champion List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Death Covens|Heavy Axe
+Death Covens,D1,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Death Covens|Full-plate
+Death Covens,D1,Champion List,Item,Ancient Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Death Covens|Ancient Banner
+Death Covens,D1,Champion List,Item,Bestial Companion,30,,,,,,,,Item,0-1,"Each time this fighter makes a melee attack, they can make 1 additional attack with the following weapon: Rend -1, Damage 2, Critical Damage d3+1, Weapon Traits Natural Weapon. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Death Covens|Bestial Companion
+Death Covens,D1,Champion List,Item,Spirit Guardian,45,,,,,,,,Item,0-1,"Once per battle this fighter can use the following bonus action: Invoke Ethereal Protection [Bonus Action]: Until the end of the round, this fighter ignores Rend for attacks that target them. In addition, each time they make a successful armour roll against a melee attack, the attacking fighter suffers 1 damage. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Death Covens|Spirit Guardian
+Death Covens,D1,Champion List,Item,Winged Familiar,12,,,,,,,,Item,0-1,"Once per battle fighter can use the following bonus action: Harry [Bonus Action]: Pick a visible enemy fighter within 24"". Until the end of the round, that enemy fighter is harried. While a fighter is harried, each time they make a Move or Action they must pass a Willpower test, else they lose that Move or Action.",Death Covens|Winged Familiar
+Death Covens,D2,Practitioner List,Melee Weapon,Arcane Staff,10,,2,-,1,d3,"Arcane, Off-hand",,,,,Death Covens|Arcane Staff
+Death Covens,D2,Practitioner List,Melee Weapon,Ensorcelled Weapon,26,,3,-1,1,d3,Arcane,,,,,Death Covens|Ensorcelled Weapon
+Death Covens,D2,Practitioner List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Death Covens|Sword
+Death Covens,D2,Practitioner List,Melee Weapon,Cursed Blade,40,,3,-1,1,d3,"Arcane, Guard, Off-hand, Poison",,,,,Death Covens|Cursed Blade
+Death Covens,D2,Practitioner List,Armour,Warded Robes,10,,,,,,,6+,,,"Armour value 6+. Roll a dice each time a fighter equipped with this armour is targeted by a spell cast by an enemy fighter. On a 4+, the spell has no effect on this fighter.",Death Covens|Warded Robes
+Death Covens,D2,Practitioner List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Death Covens|Grimoire
+Death Covens,D2,Practitioner List,Item,Bestial Companion,30,,,,,,,,Item,0-1,"Each time this fighter makes a melee attack, they can make 1 additional attack with the following weapon: Rend -1, Damage 2, Critical Damage d3+1, Weapon Traits Natural Weapon. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Death Covens|Bestial Companion
+Death Covens,D2,Practitioner List,Item,Winged Familiar,12,,,,,,,,Item,0-1,"Once per battle fighter can use the following bonus action: Harry [Bonus Action]: Pick a visible enemy fighter within 24"". Until the end of the round, that enemy fighter is harried. While a fighter is harried, each time they make a Move or Action they must pass a Willpower test, else they lose that Move or Action.",Death Covens|Winged Familiar
+Death Covens,D2,Practitioner List,Item,Spirit Guardian,45,,,,,,,,Item,0-1,"Once per battle this fighter can use the following bonus action: Invoke Ethereal Protection [Bonus Action]: Until the end of the round, this fighter ignores Rend for attacks that target them. In addition, each time they make a successful armour roll against a melee attack, the attacking fighter suffers 1 damage. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules.",Death Covens|Spirit Guardian
+Death Covens,D3,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Death Covens|Axe
+Death Covens,D3,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Death Covens|Club/Mace/Hammer
+Death Covens,D3,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Death Covens|Dagger
+Death Covens,D3,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Death Covens|Flail
+Death Covens,D3,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Death Covens|Halberd
+Death Covens,D3,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Death Covens|Spear
+Death Covens,D3,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Death Covens|Sword
+Death Covens,D3,Main List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Death Covens|Cuirass
+Death Covens,D3,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Death Covens|Shield
+Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Blade,36,,3,-1,2,d3+1,Off-hand,,,,,Death Covens|Ogre Blade
+Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Great Weapon,50,,3,-2,3,d3+2,Two-handed,,,,,Death Covens|Ogre Great Weapon
+Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Mace,38,,3,-1,2,d3+1,"Bludgeon, Off-hand",,,,,Death Covens|Ogre Mace
+Death Covens,D4,Zombie Ogre List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Death Covens|Shield
+Blighted Cloister,B1,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Blighted Cloister|Axe
+Blighted Cloister,B1,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Blighted Cloister|Club/Mace/Hammer
+Blighted Cloister,B1,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Blighted Cloister|Dagger
+Blighted Cloister,B1,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Blighted Cloister|Flail
+Blighted Cloister,B1,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Halberd
+Blighted Cloister,B1,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Spear
+Blighted Cloister,B1,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Blighted Cloister|Sword
+Blighted Cloister,B1,Main List,Melee Weapon,Great Club,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Blighted Cloister|Great Club
+Blighted Cloister,B1,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Blighted Cloister|Heavy Axe
+Blighted Cloister,B1,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Blighted Cloister|Shield
+Blighted Cloister,B1,Main List,Item,Cloister Icon,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Blighted Cloister|Cloister Icon
+Blighted Cloister,B1,Champion List,Melee Weapon,Demonic Rot Blade,45,,3,-1,1,d3,"Arcane, Guard, Poison",,,,,Blighted Cloister|Demonic Rot Blade
+Blighted Cloister,B1,Champion List,Melee Weapon,Great Demonic Rot Blade,70,,3,-2,3,d3+2,"Arcane, Bludgeon, Poison, Two-handed, Unwieldy",,,,,Blighted Cloister|Great Demonic Rot Blade
+Blighted Cloister,B1,Champion List,Armour,Full-plate,40,,,,,,,4+,,,Armour value 4+. Fighters equipped with this armour cannot be equipped with two-handed ranged weapons with the exception of a Brace of Pistols.,Blighted Cloister|Full-plate
+Blighted Cloister,B2,Practitioner Item List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Blighted Cloister|Grimoire
+Blighted Cloister,B2,Practitioner Item List,Item,Cauldron,40,,,,,,,,Held Item,0-1,"[Action] This fighter can use this item as an action. The fighter takes a Willpower test. If they pass, pick a spell from a spell lore they know to be prepared.",Blighted Cloister|Cauldron
+Blighted Cloister,B2,Practitioner Item List,Item,Demonic Familiar,30,,,,,,,,Item,0-1,"Each time this fighter makes a melee attack, they can make 1 additional attack with the following weapon: Rend -, Damage 1, Critical Damage d3, Weapon Traits Arcane, Natural Weapon, Poison. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules. (Book discrepancy: the item page prints 20 silver, the armoury list prints 30s; 30 used.)",Blighted Cloister|Demonic Familiar
+Blighted Cloister,B2,Practitioner Item List,Item,Ensorcelled Bell,10,,,,,,,,Item,0-1,"Once per battle, you can re-roll a miscast roll made for this fighter.",Blighted Cloister|Ensorcelled Bell
+Blighted Cloister,B3,Practitioner List,Melee Weapon,Arcane Staff,10,,2,-,1,d3,"Arcane, Off-hand",,,,,Blighted Cloister|Arcane Staff
+Blighted Cloister,B3,Practitioner List,Melee Weapon,Ensorcelled Weapon,26,,3,-1,1,d3,Arcane,,,,,Blighted Cloister|Ensorcelled Weapon
+Blighted Cloister,B3,Practitioner List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Blighted Cloister|Sword
+Blighted Cloister,B3,Practitioner List,Armour,Warded Robes,10,,,,,,,6+,,,"Armour value 6+. Roll a dice each time a fighter equipped with this armour is targeted by a spell cast by an enemy fighter. On a 4+, the spell has no effect on this fighter.",Blighted Cloister|Warded Robes
+Blighted Cloister,B3,Practitioner Item List,Item,Grimoire,15,,,,,,,,Item,0-1,"Once per battle, after this fighter has made casting roll, you can re-roll the casting roll.",Blighted Cloister|Grimoire
+Blighted Cloister,B3,Practitioner Item List,Item,Cauldron,40,,,,,,,,Held Item,0-1,"[Action] This fighter can use this item as an action. The fighter takes a Willpower test. If they pass, pick a spell from a spell lore they know to be prepared.",Blighted Cloister|Cauldron
+Blighted Cloister,B3,Practitioner Item List,Item,Demonic Familiar,30,,,,,,,,Item,0-1,"Each time this fighter makes a melee attack, they can make 1 additional attack with the following weapon: Rend -, Damage 1, Critical Damage d3, Weapon Traits Arcane, Natural Weapon, Poison. Designer's Note: This item is designed for miniatures that feature other creatures on the same base. It is not considered a separate fighter for any rules. (Book discrepancy: the item page prints 20 silver, the armoury list prints 30s; 30 used.)",Blighted Cloister|Demonic Familiar
+Blighted Cloister,B3,Practitioner Item List,Item,Ensorcelled Bell,10,,,,,,,,Item,0-1,"Once per battle, you can re-roll a miscast roll made for this fighter.",Blighted Cloister|Ensorcelled Bell
+Blighted Cloister,B4,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Blighted Cloister|Axe
+Blighted Cloister,B4,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Blighted Cloister|Club/Mace/Hammer
+Blighted Cloister,B4,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Blighted Cloister|Dagger
+Blighted Cloister,B4,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Blighted Cloister|Flail
+Blighted Cloister,B4,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Halberd
+Blighted Cloister,B4,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Spear
+Blighted Cloister,B4,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Blighted Cloister|Sword
+Blighted Cloister,B4,Main List,Melee Weapon,Great Club,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Blighted Cloister|Great Club
+Blighted Cloister,B4,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Blighted Cloister|Heavy Axe
+Blighted Cloister,B4,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Blighted Cloister|Shield
+Blighted Cloister,B4,Main List,Item,Cloister Icon,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Blighted Cloister|Cloister Icon
+Blighted Cloister,B5,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Blighted Cloister|Axe
+Blighted Cloister,B5,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Blighted Cloister|Club/Mace/Hammer
+Blighted Cloister,B5,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Blighted Cloister|Dagger
+Blighted Cloister,B5,Main List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Blighted Cloister|Flail
+Blighted Cloister,B5,Main List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Halberd
+Blighted Cloister,B5,Main List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Blighted Cloister|Spear
+Blighted Cloister,B5,Main List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Blighted Cloister|Sword
+Blighted Cloister,B5,Main List,Melee Weapon,Great Club,38,,3,-1,2,d3+1,"Bludgeon, Two-handed, Unwieldy",,,,,Blighted Cloister|Great Club
+Blighted Cloister,B5,Main List,Melee Weapon,Heavy Axe,40,,3,-2,2,d3+1,"Two-handed, Unwieldy",,,,,Blighted Cloister|Heavy Axe
+Blighted Cloister,B5,Main List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Blighted Cloister|Shield
+Blighted Cloister,B5,Main List,Item,Cloister Icon,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Blighted Cloister|Cloister Icon
+Blighted Cloister,B5,Dreg List,Ranged Weapon,Blowpipe,16,"12""",1,-,1,d3,Poison,,,,,Blighted Cloister|Blowpipe
+Blighted Cloister,B5,Dreg List,Ranged Weapon,Sling,14,"16""",1,-,1,d3,-,,,,,Blighted Cloister|Sling
+,X0,No Equipment,,,,,,,,,,,,,,

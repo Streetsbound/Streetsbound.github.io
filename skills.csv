@@ -1,0 +1,153 @@
+Skill Name,Code,Faction,Skill Table,Eligibility (as printed),Role Restriction,Keyword Restriction,Effect,Used In,Campaign Effect,Campaign Effect Note,Rules Page (pdf)
+Dual-weapon Wielder,GMS1,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,GMS1,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,GMS1,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,GMS1,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,GMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,GMS1,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,GMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,GMS1,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Rallying Cry,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,"Once per battle, a bonus action: the fighter heals 1 damage, and if still on the battlefield at end of round, the warband skips its Flee test.",Battle,N,,66
+Feint,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,"Once per melee attack action, after an enemy parries one of this fighter's hits, roll a d6; if it equals or beats the parry roll, the hit becomes a critical hit.",Battle,N,,66
+Point Blank Shot,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,"While engaged in melee, pass an Initiative test to make a Ranged Attack action (no Heavy weapons) against a fighter engaged with it.",Battle,N,,66
+Crackshot,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,Ranged attacks score a critical hit on a natural 5 or 6.,Battle,N,,66
+Explorer's Instincts,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,"If this fighter leads a scouting party, the warband gains 1 exploration re-roll.",Campaign,Y,Affects Aftermath Step 4 (Explore the City).,67
+Right On Time,GMS1,Guild Mercenaries,Old Dogs,Mercenary Leaders and Champions only,Leader or Champion,Mercenary,Re-roll reinforcement rolls made for a battle group that includes this fighter.,Battle,N,,67
+Blackpowder Specialist,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,Re-roll misfire rolls made for this fighter.,Battle,N,,67
+Fight Till the End,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"While bloodied, add 1 to the Damage and Critical Damage of melee weapons.",Battle,N,,67
+Shield Expert,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"With a shield, Armour improves by an additional 1 (maximum 2+) while defending against an attacker that charged this activation.",Battle,N,,67
+Blessed by the Saints,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Each round, the first time this fighter is hit by a critical hit, it is not a critical hit.",Battle,N,,67
+Stand Ground,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Once per battle, when defending against a charge, the fighter's melee weapons gain Brace and Bludgeon until end of the activation.",Battle,N,,67
+Marksman,GMS1,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Add 3"" to the Range of ranged weapons (not Flame weapons).",Battle,N,,67
+Dual-weapon Wielder,GMS2,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,GMS2,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,GMS2,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,GMS2,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,GMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,GMS2,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,GMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,GMS2,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Blackpowder Specialist,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,Re-roll misfire rolls made for this fighter.,Battle,N,,67
+Fight Till the End,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"While bloodied, add 1 to the Damage and Critical Damage of melee weapons.",Battle,N,,67
+Shield Expert,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"With a shield, Armour improves by an additional 1 (maximum 2+) while defending against an attacker that charged this activation.",Battle,N,,67
+Blessed by the Saints,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Each round, the first time this fighter is hit by a critical hit, it is not a critical hit.",Battle,N,,67
+Stand Ground,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Once per battle, when defending against a charge, the fighter's melee weapons gain Brace and Bludgeon until end of the activation.",Battle,N,,67
+Marksman,GMS2,Guild Mercenaries,Soldier's Cunning,Any Mercenary,Any,Mercenary,"Add 3"" to the Range of ranged weapons (not Flame weapons).",Battle,N,,67
+Dual-weapon Wielder,VMS1,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,VMS1,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,VMS1,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,VMS1,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,VMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,VMS1,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,VMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,VMS1,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Purveyor of Poisons,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,Melee weapons gain the Poison trait; a weapon that already has it improves its Rend by 1 instead.,Battle,N,,86
+Too Cunning to Die,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,"Each time you roll on the Injury table for this fighter, roll twice and pick either result.",Campaign,Y,Affects Aftermath Step 2 (Determine Injuries).,86
+Dirty Fighter,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,"-1 to enemy parry rolls against this fighter's attacks, and an enemy that fails such a parry suffers 1 damage.",Battle,N,,86
+Master of Dark Science,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,"Friendly fighters within 6"" add 3"" to ranged weapon Range and can re-roll misfire rolls.",Battle,N,,86
+Attack! Attack!,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,"Once per battle, a bonus action: until end of round friendly fighters within 9"" add 1 to melee attack rolls.",Battle,N,,86
+From Unseen Quarter,VMS1,Verminkin,Masterful Schemes,Verminkin Leaders and Champions only,Leader or Champion,Verminkin,"When first set up from reserve, this fighter can be placed anywhere more than 9"" from enemies, along with up to 2 friendly Henchmen from reserve within 3"" of it.",Battle,N,,86
+Impetuous,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"The first time this fighter moves in a battle it can move an extra d6"".",Battle,N,,87
+Escape Artist,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"Once per battle, when engaged in melee, a bonus action: remove this fighter and set it up within 2d6"" of its old position, not engaged.",Battle,N,,87
+Wall Scrambler,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Can climb high terrain as if it were ladders and can jump up to its full move distance.,Battle,N,,87
+Back Stabber,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Melee Rend improves by 1 while engaged with an enemy that is engaged with multiple fighters.,Battle,N,,87
+Ambush,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Add 1 to the Attacks of melee weapons after a Charge Move in the same activation.,Battle,N,,87
+Shadow Lurker,VMS1,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"While within 1/2"" of terrain, not visible to enemies more than 9"" away.",Battle,N,,87
+Dual-weapon Wielder,VMS2,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,VMS2,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,VMS2,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,VMS2,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,VMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,VMS2,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,VMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,VMS2,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Impetuous,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"The first time this fighter moves in a battle it can move an extra d6"".",Battle,N,,87
+Escape Artist,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"Once per battle, when engaged in melee, a bonus action: remove this fighter and set it up within 2d6"" of its old position, not engaged.",Battle,N,,87
+Wall Scrambler,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Can climb high terrain as if it were ladders and can jump up to its full move distance.,Battle,N,,87
+Back Stabber,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Melee Rend improves by 1 while engaged with an enemy that is engaged with multiple fighters.,Battle,N,,87
+Ambush,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,Add 1 to the Attacks of melee weapons after a Charge Move in the same activation.,Battle,N,,87
+Shadow Lurker,VMS2,Verminkin,Tunnel Runners,Any Verminkin fighter,Any,Verminkin,"While within 1/2"" of terrain, not visible to enemies more than 9"" away.",Battle,N,,87
+Dual-weapon Wielder,,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,DMS1,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,DMS1,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,DMS1,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,DMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,DMS1,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,DMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,DMS1,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Cloud of Bats,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,"Once per battle, a bonus action: remove the fighter and set it up within 9"" horizontally of its old position, not engaged.",Battle,N,,104
+Mesmeric Gaze,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,"Once per battle on a melee attack, both sides roll a d6 plus Willpower; if this fighter's total is higher, the defender's melee weapons get -1 Attacks for that action (off-hand unaffected).",Battle,N,,104
+Unholy Strength,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,Melee weapons gain the Bludgeon trait.,Battle,N,,104
+Supernatural Healing,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,"Cannot suffer permanent injuries (all are temporary). If killed, a Willpower test: on a pass the fighter is not killed but misses the next d3 battles and a Champion assumes command in the meantime.",Both,Y,"Overrides the Killed injury result and the permanent-injury roll (Step 2), and removes the fighter from the next d3 battles.",105
+Leech Blood,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,"Once per battle, a bonus action: each enemy within 9"" takes a Willpower test; on a fail it suffers 1 damage and this fighter heals 1 life.",Battle,N,,105
+Relentless Attacker,DMS1,Death Covens,Dark Aristocracy,Undead Aristocrat Leaders and Champions only,Leader or Champion,Undead + Aristocrat,-1 to parry rolls made against this fighter's attacks.,Battle,N,,105
+Dual-weapon Wielder,DMS2,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,DMS2,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,DMS2,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,DMS2,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,DMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,DMS2,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,DMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,DMS2,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Death March,DMS2,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"Once per battle, a bonus action: until end of round friendly Thralls that begin a move within 9"" add 2 to Move.",Battle,N,,105
+Dread Aura,DMS2,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,Causes fear: enemies starting an activation engaged with a fear-causing fighter must pass a Willpower test or their activation ends (enemies that cause fear ignore this).,Battle,N,,105
+Rise Again,DMS2,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"After first being taken down, mark the spot; at the start of each later round roll a d6, on a 6 the fighter returns near the mark with d3 life. Once per battle.",Battle,N,,105
+Drag Down Into the Earth,DMS2,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"When taken down in melee, pick 1 engaged fighter; it suffers d3 damage.",Battle,N,,105
+Chill Touch,DMS2,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,Add 1 to the Critical Damage of melee weapons.,Battle,N,,105
+Dual-weapon Wielder,DMS3,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,DMS3,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,DMS3,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,DMS3,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,DMS3,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,DMS3,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,DMS3,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,DMS3,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Death March,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"Once per battle, a bonus action: until end of round friendly Thralls that begin a move within 9"" add 2 to Move.",Battle,N,,105
+Dread Aura,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,Causes fear: enemies starting an activation engaged with a fear-causing fighter must pass a Willpower test or their activation ends (enemies that cause fear ignore this).,Battle,N,,105
+Rise Again,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"After first being taken down, mark the spot; at the start of each later round roll a d6, on a 6 the fighter returns near the mark with d3 life. Once per battle.",Battle,N,,105
+Drag Down Into the Earth,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,"When taken down in melee, pick 1 engaged fighter; it suffers d3 damage.",Battle,N,,105
+Chill Touch,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only,Leader or Champion,Undead + Skeleton,Add 1 to the Critical Damage of melee weapons.,Battle,N,,105
+Kingsguard,DMS3,Death Covens,Undying Lords,Undead Skeleton Leaders and Champions only (Kingsguard: Champion only),Champion only,Undead + Skeleton,"If an enemy finishes a Charge engaged with a friendly Leader and this fighter is not engaged, it can charge that enemy; that enemy must then target this fighter with its melee attacks this activation.",Battle,N,,105
+Dual-weapon Wielder,DMS4,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,DMS4,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,DMS4,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,DMS4,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,DMS4,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,DMS4,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,DMS4,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,DMS4,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Dual-weapon Wielder,BMS1,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,BMS1,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,BMS1,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,BMS1,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,BMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,BMS1,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,BMS1,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,BMS1,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Shepherd the Afflicted,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,"Other friendly fighters that start a move within 6"" add 1"" to maximum move.",Battle,N,,124
+Last Rites,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,"When another fighter is taken down within 6"", this fighter can heal 1 life.",Battle,N,,124
+Demonic Conduit,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,"Once per battle, a friendly Demon being set up from reserve can instead be set up within 3"" of this fighter, not engaged.",Battle,N,,124
+Unholy Sermon,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,"Once per battle, if not engaged, a bonus action: until end of round friendly fighters within 6"" add 1 to melee attack rolls.",Battle,N,,124
+Rite of Contagion,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,"Once per battle, if not engaged, a bonus action: each enemy within 12"" must pass a Willpower test or suffer 1 damage and be poisoned.",Battle,N,,124
+The Black Benediction,BMS1,Blighted Cloister,Ordained of the Cloister,Cloister Leaders and Champions only,Leader or Champion,Cloister,Weapons targeting this fighter have Damage and Critical Damage reduced by 1 (minimum 1).,Battle,N,,125
+Infested with Maggots,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,"Each activation, if damaged, roll a d6: on a 4+ the fighter heals 1 life.",Battle,N,,125
+Shroud of Flies,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,-1 to attack rolls that target this fighter.,Battle,N,,125
+Black Blood,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,Cannot be poisoned.,Battle,N,,125
+Toxic Miasma,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,An enemy activating while engaged with this fighter must pass a Willpower test or suffer 1 damage.,Battle,N,,125
+Vessel of Black Rot,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,"When taken down, roll a d6 for each enemy within 6""; on a 4+ they become poisoned.",Battle,N,,125
+Vector of Entropy,BMS1,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,Enemy fighters engaged in melee with this fighter have Armour worsened by 1 (minimum '-').,Battle,N,,125
+Dual-weapon Wielder,BMS2,All factions,Veteran Skills,Any fighter,Any,,"When attacking with an off-hand weapon, make 2 attacks with it instead of 1.",Battle,N,,52
+Tough Bastard,BMS2,All factions,Veteran Skills,Any fighter,Any,,"When activating while bloodied, take a Willpower test; if passed, heal 1 life and stop being bloodied.",Battle,N,,52
+Shooting Drills,BMS2,All factions,Veteran Skills,Any fighter,Any,,"When reloading, a Willpower test lets the fighter avoid giving up a Move or Action.",Battle,N,,52
+Fast Learner,BMS2,All factions,Veteran Skills,Any fighter,Any,,"In the aftermath of every battle, the fighter earns d6 bonus experience.",Campaign,Y,Extra d6 XP in Aftermath Step 3 every battle.,52
+Great Weapon Master,BMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Unwieldy trait on melee weapons.,Battle,N,,52
+Duellist,BMS2,All factions,Veteran Skills,Any fighter,Any,,Can parry critical hits with any successful attack.,Battle,N,,52
+Unshakeable,BMS2,All factions,Veteran Skills,Any fighter,Any,,Ignores the Fear special rule and rules that make them scatter (such as the Scare trait).,Battle,N,,52
+Steady Aim,BMS2,All factions,Veteran Skills,Any fighter,Any,,+1 to ranged attack rolls if the fighter has not moved this activation.,Battle,N,,52
+Infested with Maggots,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,"Each activation, if damaged, roll a d6: on a 4+ the fighter heals 1 life.",Battle,N,,125
+Shroud of Flies,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,-1 to attack rolls that target this fighter.,Battle,N,,125
+Black Blood,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,Cannot be poisoned.,Battle,N,,125
+Toxic Miasma,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,An enemy activating while engaged with this fighter must pass a Willpower test or suffer 1 damage.,Battle,N,,125
+Vessel of Black Rot,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,"When taken down, roll a d6 for each enemy within 6""; on a 4+ they become poisoned.",Battle,N,,125
+Vector of Entropy,BMS2,Blighted Cloister,Blessings of Saint Rot,Any Cloister fighter,Any,Cloister,Enemy fighters engaged in melee with this fighter have Armour worsened by 1 (minimum '-').,Battle,N,,125
+,X1,All factions,no skills,,,,,,,,
