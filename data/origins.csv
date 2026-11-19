@@ -1,0 +1,17 @@
+Faction,Origin,Leader Unit,Stronghold,Special Rules,Limit Override Unit,Limit Override,Ignores Beast Limit,Rules Page (pdf)
+Guild Mercenaries,Swords for Hire,Guild Captain,Guild Barracks,,,,,55
+Guild Mercenaries,Disgraced Noble,Noble,Dilapidated Manor,,,,,55
+Guild Mercenaries,Witch Hunters' Guild,Witch Hunter,Chapter House,,,,,55
+Guild Mercenaries,Wizard's Retinue,High Wizard of the Guild,Hidden Library,,,,,55
+Verminkin,Acolytes of Plague,Pox Priest,Desecrated Chapel,Your warband can include 0-2 Pox Priest Apprentices.,Pox Priest's Apprentice,0-2,,75
+Verminkin,Rooftop Runners,Nightfang Assassin,Hidden Vantage,,,,,75
+Verminkin,Sparkseer Coven,Sparkseer,Rickety Workshop,Your warband can include 0-2 Rolling Contraptions.,Rolling-Contraption,0-2,,75
+Verminkin,Merciless Tyrant,Ironfang Warlord,Fortified Warren,,,,,75
+Death Covens,Aristocrats of Blood,Bloodcursed Noble,Opulent Manor,Your warband can include 0-3 Bloodcursed Knights.,Bloodcursed Knight,0-3,,95
+Death Covens,Rogue Necromancer,Necromancer,Embalmer's Hall,,,,,95
+Death Covens,The Hunt Descends,Lycanfell Noble,Woodland Estate,Your warband can include any number of Dire Wolves (they do not count towards your Beasts limit).,Dire Wolf,any,Y,95
+Death Covens,Awakened Lord,Barrow Lord,Ancient Barrows,,,,,95
+Blighted Cloister,Knights-Militant,Knight-Abbot,Fortified Keep,Your warband can recruit any number of Cloister Knights.,Cloister Knight,any,,115
+Blighted Cloister,Priesthood of Sorcerers,High Sorcerer,Secluded Scriptorium,Your warband can recruit 0-2 Cloister Sorcerers.,Cloister Sorcerer,0-2,,115
+Blighted Cloister,The Anointed One,Knight-Abbot,Unholy Altar,Your warband can recruit any number of Rot Demons.,Rot Demon,any,,115
+Blighted Cloister,Blessed Rabble,High Sorcerer,Street Pulpit,,,,,115
