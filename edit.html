@@ -4,7 +4,7 @@
 <body>
 <p><a href="index.html">Home</a></p>
 <h1>Edit my warband</h1>
-<p>Spend silver on wargear for your fighters. Each purchase is checked and logged.</p>
+<p>Buy, move and sell wargear. Each change is checked and logged.</p>
 
 <p id="status">Loading...</p>
 
@@ -17,7 +17,10 @@
 
 <script>
 // Paste your Apps Script web app URL (it ends in /exec) between the quotes:
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwI6-VzhDRUPY6lNG6F7Xf24Nu3MGZWgi3MrWIIraKbu2jb-YZWaKnKmz1fxZ5ntFCY/exec";
+const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+// GROUP DECISION: must match SELL_ROUNDING in the script ("down" or "up")
+const SELL_ROUNDING = "down";
 
 // ---------- helpers ----------
 function parseCSV(text) {
@@ -71,6 +74,7 @@ let UNITS = {}, EQUIP = [], ITEMS = {};
 let current = null;   // the warband data from the script
 
 const itemName = key => ITEMS[key] ? ITEMS[key]["Name"] : String(key).split("|").pop();
+const half = price => SELL_ROUNDING === "up" ? Math.ceil(price / 2) : Math.floor(price / 2);
 
 function optionsFor(unit) {
   const code = unit ? unit["Wargear Allowed"] : "";
@@ -82,21 +86,42 @@ function optionsFor(unit) {
 function render() {
   const w = current.warband, silver = num(w.silver);
   const fighters = current.fighters.filter(f => (f.status || "Active") === "Active");
-  const html = fighters.map(f => {
+
+  const fightersHtml = fighters.map(f => {
     const u = UNITS[f.unit_name];
     const opts = optionsFor(u);
     const owned = f.wargear.length
-      ? "<ul>" + f.wargear.map(g => `<li>${esc(itemName(g.item_key))}</li>`).join("") + "</ul>" : "none<br>";
+      ? "<ul>" + f.wargear.map(g => `<li>${esc(itemName(g.item_key))} <button data-act="tostash" data-fighter="${esc(f.fighter_id)}" data-item="${esc(g.item_key)}">Move to stash</button></li>`).join("") + "</ul>"
+      : "none<br>";
     const picker = opts.length
       ? `<select id="buy-${esc(f.fighter_id)}">` + opts.map(e => {
           const price = num(e["Silver"]);
           return `<option value="${esc(e["Item Key"])}"${price > silver ? " disabled" : ""}>${esc(e["Name"])} (${esc(e["Category"])}, ${price}s${e["Rare Limit"] ? ", rare " + esc(e["Rare Limit"]) : ""})${price > silver ? " - too expensive" : ""}</option>`;
-        }).join("") + `</select> <button data-fighter="${esc(f.fighter_id)}">Buy</button>`
+        }).join("") + `</select> <button data-act="buy" data-fighter="${esc(f.fighter_id)}">Buy</button>`
       : "No wargear available for this unit.";
     return `<h3>${esc(f.fighter_name)} (${esc(f.unit_name)})</h3><p>Wargear: ${owned}${picker}</p>`;
   }).join("") || "<p>No active fighters.</p>";
+
+  const stashHtml = current.stash.length
+    ? "<ul>" + current.stash.map((s, i) => {
+        const kind = s.kind || "Wargear";
+        // fighters who can carry it: any for curiosities and relics, otherwise by their wargear list
+        const takers = fighters.filter(f => kind !== "Wargear" || optionsFor(UNITS[f.unit_name]).some(e => e["Item Key"] === s.item_key));
+        const give = takers.length
+          ? ` Give to <select id="give-${i}">${takers.map(f => `<option value="${esc(f.fighter_id)}">${esc(f.fighter_name)}</option>`).join("")}</select> <button data-act="give" data-i="${i}">Give</button>`
+          : " (no fighter can carry this)";
+        const row = ITEMS[s.item_key];
+        const sell = kind === "Wargear" && row
+          ? ` <button data-act="sell" data-i="${i}">Sell 1 for ${half(num(row["Silver"]))}s</button>`
+          : kind === "Wargear" ? "" : " (cannot be sold here yet)";
+        return `<li>${esc(itemName(s.item_key))} x${num(s.qty) || 1} (${esc(kind)})${give}${sell}</li>`;
+      }).join("") + "</ul>"
+    : "<p>Empty.</p>";
+
   document.getElementById("view").innerHTML =
-    `<h2>${esc(w.warband_name)}</h2><p>Silver: ${silver}s</p>${html}`;
+    `<h2>${esc(w.warband_name)}</h2><p>Silver: ${silver}s</p>
+     <h2>Fighters</h2>${fightersHtml}
+     <h2>Stash</h2>${stashHtml}`;
 }
 
 async function loadWarband(id) {
@@ -105,24 +130,42 @@ async function loadWarband(id) {
 }
 
 // ---------- events ----------
-document.getElementById("view").addEventListener("click", async e => {
-  const fid = e.target.dataset.fighter;
-  if (!fid) return;
+async function doAction(button, payload, done) {
   const msg = document.getElementById("message");
   const key = document.getElementById("groupKey").value;
   if (!key) { msg.textContent = "Enter the group key first."; return; }
-  const itemKey = document.getElementById("buy-" + fid).value;
-  e.target.disabled = true; msg.textContent = "Buying...";
+  button.disabled = true; msg.textContent = "Working...";
   try {
-    const res = await postToScript({
-      action: "buyWargear", key: key, player_id: current.warband.player_id,
-      warband_id: current.warband.warband_id, fighter_id: fid, item_key: itemKey });
+    const res = await postToScript(Object.assign({ key: key, player_id: current.warband.player_id, warband_id: current.warband.warband_id }, payload));
     remembered("bdcGroupKey", key);
-    msg.textContent = `Bought ${itemName(itemKey)}. Silver left: ${res.silver}s.`;
+    msg.textContent = done(res);
     await loadWarband(current.warband.warband_id);
   } catch (err) {
-    msg.textContent = "Could not buy: " + err.message;
-    e.target.disabled = false;
+    msg.textContent = "Could not do that: " + err.message;
+    button.disabled = false;
+  }
+}
+
+document.getElementById("view").addEventListener("click", e => {
+  const act = e.target.dataset.act;
+  if (!act) return;
+  if (act === "buy") {
+    const fid = e.target.dataset.fighter, item = document.getElementById("buy-" + fid).value;
+    doAction(e.target, { action: "buyWargear", fighter_id: fid, item_key: item },
+      res => `Bought ${itemName(item)}. Silver left: ${res.silver}s.`);
+  } else if (act === "tostash") {
+    const item = e.target.dataset.item;
+    doAction(e.target, { action: "moveToStash", fighter_id: e.target.dataset.fighter, item_key: item },
+      () => `Moved ${itemName(item)} to the stash.`);
+  } else if (act === "give") {
+    const s = current.stash[parseInt(e.target.dataset.i, 10)];
+    const fid = document.getElementById("give-" + e.target.dataset.i).value;
+    doAction(e.target, { action: "giveFromStash", fighter_id: fid, item_key: s.item_key, kind: s.kind || "Wargear" },
+      () => `Gave ${itemName(s.item_key)} to a fighter.`);
+  } else if (act === "sell") {
+    const s = current.stash[parseInt(e.target.dataset.i, 10)];
+    doAction(e.target, { action: "sellFromStash", item_key: s.item_key, qty: 1 },
+      res => `Sold ${itemName(s.item_key)} for ${res.earned}s. Silver: ${res.silver}s.`);
   }
 });
 document.getElementById("pick").addEventListener("change", async e => {
