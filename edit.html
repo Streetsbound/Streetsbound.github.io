@@ -4,7 +4,7 @@
 <body>
 <p><a href="index.html">Home</a></p>
 <h1>Edit my warband</h1>
-<p>Buy, move and sell wargear, and recruit fighters. Each change is checked and logged.</p>
+<p>Buy, move and sell wargear, recruit and retire fighters. Each change is checked and logged.</p>
 
 <p id="status">Loading...</p>
 
@@ -99,7 +99,7 @@ function render() {
           return `<option value="${esc(e["Item Key"])}"${price > silver ? " disabled" : ""}>${esc(e["Name"])} (${esc(e["Category"])}, ${price}s${e["Rare Limit"] ? ", rare " + esc(e["Rare Limit"]) : ""})${price > silver ? " - too expensive" : ""}</option>`;
         }).join("") + `</select> <button data-act="buy" data-fighter="${esc(f.fighter_id)}">Buy</button>`
       : "No wargear available for this unit.";
-    return `<h3>${esc(f.fighter_name)} (${esc(f.unit_name)})</h3><p>Wargear: ${owned}${picker}</p>`;
+    return `<h3>${esc(f.fighter_name)} (${esc(f.unit_name)}) <button data-act="retire" data-fighter="${esc(f.fighter_id)}" data-name="${esc(f.fighter_name)}">Retire</button></h3><p>Wargear: ${owned}${picker}</p>`;
   }).join("") || "<p>No active fighters.</p>";
 
   const stashHtml = current.stash.length
@@ -143,7 +143,7 @@ function renderRecruitSkills() {
   const u = UNITS[sel.value];
   const slots = u ? parseInt(u["Recruit Skills"], 10) || 0 : 0;
   if (!slots) { box.innerHTML = ""; return; }
-  const held = new Set(current.fighters.flatMap(f => f.skills.map(x => x.skill_name)));
+  const held = new Set(current.fighters.filter(f => (f.status || "Active") === "Active").flatMap(f => f.skills.map(x => x.skill_name)));
   const seen = new Set();
   const opts = SKILLS.filter(k => k["Code"] === u["Skills"] && !seen.has(k["Skill Name"]) && seen.add(k["Skill Name"]));
   let html = "Skills to pick:";
@@ -192,6 +192,11 @@ document.getElementById("view").addEventListener("click", e => {
     const fid = document.getElementById("give-" + e.target.dataset.i).value;
     doAction(e.target, { action: "giveFromStash", fighter_id: fid, item_key: s.item_key, kind: s.kind || "Wargear" },
       () => `Gave ${itemName(s.item_key)} to a fighter.`);
+  } else if (act === "retire") {
+    const name = e.target.dataset.name;
+    if (!confirm("Retire " + name + "? They leave the warband and their wargear goes to the stash.")) return;
+    doAction(e.target, { action: "retireFighter", fighter_id: e.target.dataset.fighter },
+      res => `${name} has retired. ${res.moved} item(s) moved to the stash.`);
   } else if (act === "recruit") {
     const unitName = document.getElementById("rec-unit").value;
     const name = document.getElementById("rec-name").value.trim();
