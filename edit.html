@@ -4,7 +4,7 @@
 <body>
 <p><a href="index.html">Home</a></p>
 <h1>Edit my warband</h1>
-<p>Buy, move and sell wargear. Each change is checked and logged.</p>
+<p>Buy, move and sell wargear, and recruit fighters. Each change is checked and logged.</p>
 
 <p id="status">Loading...</p>
 
@@ -70,7 +70,7 @@ function remembered(key, value) {
 }
 
 // ---------- state ----------
-let UNITS = {}, EQUIP = [], ITEMS = {};
+let UNITS = {}, EQUIP = [], ITEMS = {}, SKILLS = [];
 let current = null;   // the warband data from the script
 
 const itemName = key => ITEMS[key] ? ITEMS[key]["Name"] : String(key).split("|").pop();
@@ -118,10 +118,40 @@ function render() {
       }).join("") + "</ul>"
     : "<p>Empty.</p>";
 
+  const recruitable = Object.values(UNITS).filter(u => u["Faction"] === w.faction);
+  const recruitHtml = `<p>Unit: <select id="rec-unit">${recruitable.map(u => {
+      const cost = num(u["Cost"]);
+      return `<option value="${esc(u["Unit Name"])}"${cost > silver ? " disabled" : ""}>${esc(u["Unit Name"])} (${esc(u["Type"])}, ${cost}s)${cost > silver ? " - too expensive" : ""}</option>`;
+    }).join("")}</select>
+    Name: <input id="rec-name" size="20">
+    <span id="rec-skills"></span>
+    <button data-act="recruit">Recruit</button></p>
+    <p>Your warband's limits (15 fighters, unit limits, Leader and Henchmen rules) are checked when you recruit. New fighters start with no wargear; buy it above.</p>`;
+
   document.getElementById("view").innerHTML =
     `<h2>${esc(w.warband_name)}</h2><p>Silver: ${silver}s</p>
      <h2>Fighters</h2>${fightersHtml}
+     <h2>Recruit a fighter</h2>${recruitHtml}
      <h2>Stash</h2>${stashHtml}`;
+  renderRecruitSkills();
+}
+
+// skill dropdowns for the unit chosen in the recruit form
+function renderRecruitSkills() {
+  const sel = document.getElementById("rec-unit"), box = document.getElementById("rec-skills");
+  if (!sel || !box) return;
+  const u = UNITS[sel.value];
+  const slots = u ? parseInt(u["Recruit Skills"], 10) || 0 : 0;
+  if (!slots) { box.innerHTML = ""; return; }
+  const held = new Set(current.fighters.flatMap(f => f.skills.map(x => x.skill_name)));
+  const seen = new Set();
+  const opts = SKILLS.filter(k => k["Code"] === u["Skills"] && !seen.has(k["Skill Name"]) && seen.add(k["Skill Name"]));
+  let html = "Skills to pick:";
+  for (let i = 0; i < slots; i++) {
+    html += ` <select id="rec-skill-${i}"><option value="">(choose a skill)</option>` +
+      opts.map(k => `<option value="${esc(k["Skill Name"])}"${held.has(k["Skill Name"]) ? " disabled" : ""}>${esc(k["Skill Name"])} (${esc(k["Skill Table"])})</option>`).join("") + "</select>";
+  }
+  box.innerHTML = html;
 }
 
 async function loadWarband(id) {
@@ -162,12 +192,23 @@ document.getElementById("view").addEventListener("click", e => {
     const fid = document.getElementById("give-" + e.target.dataset.i).value;
     doAction(e.target, { action: "giveFromStash", fighter_id: fid, item_key: s.item_key, kind: s.kind || "Wargear" },
       () => `Gave ${itemName(s.item_key)} to a fighter.`);
+  } else if (act === "recruit") {
+    const unitName = document.getElementById("rec-unit").value;
+    const name = document.getElementById("rec-name").value.trim();
+    const u = UNITS[unitName], slots = u ? parseInt(u["Recruit Skills"], 10) || 0 : 0;
+    const skills = [];
+    for (let i = 0; i < slots; i++) skills.push(document.getElementById("rec-skill-" + i).value);
+    if (!name) { document.getElementById("message").textContent = "Give the new fighter a name."; return; }
+    if (skills.some(x => !x)) { document.getElementById("message").textContent = "Pick the skill(s) for this fighter."; return; }
+    doAction(e.target, { action: "recruitFighter", unit_name: unitName, fighter_name: name, skills: skills },
+      res => `Recruited ${name} (${unitName}) with ${res.xp} starting XP. Silver left: ${res.silver}s.`);
   } else if (act === "sell") {
     const s = current.stash[parseInt(e.target.dataset.i, 10)];
     doAction(e.target, { action: "sellFromStash", item_key: s.item_key, qty: 1 },
       res => `Sold ${itemName(s.item_key)} for ${res.earned}s. Silver: ${res.silver}s.`);
   }
 });
+document.getElementById("view").addEventListener("change", e => { if (e.target.id === "rec-unit") renderRecruitSkills(); });
 document.getElementById("pick").addEventListener("change", async e => {
   document.getElementById("message").textContent = "";
   try { await loadWarband(e.target.value); } catch (err) { document.getElementById("message").textContent = err.message; }
@@ -178,7 +219,8 @@ document.getElementById("pick").addEventListener("change", async e => {
   const status = document.getElementById("status");
   if (SCRIPT_URL.startsWith("PASTE_")) { status.textContent = "Set SCRIPT_URL near the top of this file first."; return; }
   try {
-    const [units, equip, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), getFromScript({ action: "listWarbands" })]);
+    const [units, equip, skills, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/skills.csv"), getFromScript({ action: "listWarbands" })]);
+    SKILLS = skills;
     units.forEach(u => UNITS[u["Unit Name"]] = u);
     EQUIP = equip;
     equip.forEach(i => { if (i["Item Key"] && !ITEMS[i["Item Key"]]) ITEMS[i["Item Key"]] = i; });
