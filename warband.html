@@ -4,27 +4,146 @@
 <body>
 <p><a href="index.html">Home</a></p>
 <h1>My warband</h1>
-<p>Placeholder. Nothing on this page works yet.</p>
 
-<p>(player picker goes here)</p>
+<p id="status">Loading...</p>
 
-<ul>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#fighters">Fighters</a></li>
-<li><a href="#holdings">Holdings</a></li>
-<li><a href="#stash">Stash</a></li>
-</ul>
+<div id="app" hidden>
+<p>Warband: <select id="pick"></select> <button id="reload">Reload</button></p>
+<div id="view"></div>
+</div>
 
-<h2 id="summary">Summary</h2>
-<p>Warband name, faction, origin, stronghold, silver, warband rating.</p>
+<script>
+// Paste your Apps Script web app URL (it ends in /exec) between the quotes:
+const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
 
-<h2 id="fighters">Fighters</h2>
-<p>One scroll per fighter: stats, rank, XP, skills, spells, wargear, injuries.</p>
+// ---------- helpers ----------
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else inQuotes = false; }
+      else cell += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); cell = "";
+      if (row.some(x => x !== "")) rows.push(row);
+      row = [];
+    } else cell += c;
+  }
+  row.push(cell);
+  if (row.some(x => x !== "")) rows.push(row);
+  const header = rows.shift().map(h => h.trim());
+  return rows.map(r => { const o = {}; header.forEach((h, i) => o[h] = (r[i] || "").trim()); return o; });
+}
+async function loadCSV(path) {
+  const res = await fetch(path, { cache: "no-store" });   // always fetch a fresh copy
+  if (!res.ok) throw new Error(path + " (" + res.status + ")");
+  return parseCSV(await res.text());
+}
+async function callScript(params) {
+  const res = await fetch(SCRIPT_URL + "?" + new URLSearchParams(params));
+  const data = await res.json();
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+const num = v => { const n = parseFloat(v); return isNaN(n) ? 0 : n; };
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-<h2 id="holdings">Holdings</h2>
-<p>Holdings owned (maximum 5) and whether each is ransacked.</p>
+// Rank from total XP (rank table in the aftermath rules, step 3)
+const RANK_MIN = [0, 7, 13, 20, 30, 40, 50, 60, 80, 100, 120, 140, 160, 180, 200, 240, 280, 320, 360, 400];
+function rankFor(xp) { let r = 1; RANK_MIN.forEach((min, i) => { if (xp >= min) r = i + 1; }); return r; }
 
-<h2 id="stash">Stash</h2>
-<p>Wargear, curiosities and relics not currently equipped.</p>
+// ---------- data ----------
+let UNITS = {}, ITEMS = {};
+
+function itemName(key) {
+  const row = ITEMS[key];
+  return row ? row["Name"] : (String(key).split("|").pop());
+}
+
+function show(data) {
+  const w = data.warband;
+  const active = data.fighters.filter(f => (f.status || "Active") === "Active");
+  const notes = [];
+  let fighterCost = 0, gearCost = 0, xpTotal = 0;
+
+  const fightersHtml = data.fighters.map(f => {
+    const u = UNITS[f.unit_name];
+    if (!u) notes.push(`Unit "${f.unit_name}" is not in units.csv (cost counted as 0).`);
+    const isActive = (f.status || "Active") === "Active";
+    const cost = u ? num(u["Cost"]) : 0;
+    const xp = num(f.xp);
+    let gear = 0;
+    const gearList = f.wargear.map(g => {
+      const row = ITEMS[g.item_key];
+      if (!row) notes.push(`Wargear "${g.item_key}" is not in equipment.csv (cost counted as 0).`);
+      const price = row ? num(row["Silver"]) : 0;
+      gear += price;
+      return `<li>${esc(itemName(g.item_key))} - ${price}s${g.source ? " (" + esc(g.source) + ")" : ""}</li>`;
+    }).join("");
+    if (isActive) { fighterCost += cost; gearCost += gear; xpTotal += xp; }
+    const skills = f.skills.length ? f.skills.map(s => esc(s.skill_name)).join(", ") : "none";
+    const stats = u ? `Move ${esc(u["Move"])}, Blade ${esc(u["Blade"])}, Bow ${esc(u["Bow"])}, Armor ${esc(u["Armor"])}, Initiative ${esc(u["Initiative"])}, Willpower ${esc(u["Willpower"])}, Life ${esc(u["Life"])}` : "";
+    const fixed = u && u["Fixed Weapon / Included Gear"] ? `<br>Included: ${esc(u["Fixed Weapon / Included Gear"])}` : "";
+    return `<h3>${esc(f.fighter_name)}${isActive ? "" : " [" + esc(f.status) + "]"}</h3>
+      <p>${esc(f.unit_name)}${u ? " (" + esc(u["Type"]) + ")" : ""} - rank ${rankFor(xp)}, ${xp} XP, cost ${cost}s<br>
+      ${stats}${fixed}<br>
+      Skills: ${skills}<br>
+      Wargear: ${gearList ? "<ul>" + gearList + "</ul>" : "none<br>"}
+      ${f.notes ? "Notes: " + esc(f.notes) : ""}</p>`;
+  }).join("") || "<p>No fighters.</p>";
+
+  const holdingsHtml = data.holdings.length
+    ? "<ul>" + data.holdings.map(h => `<li>${esc(h.holding_name)}${h.status && h.status !== "Normal" ? " (" + esc(h.status) + ")" : ""}</li>`).join("") + "</ul>"
+    : "<p>None.</p>";
+
+  const stashHtml = data.stash.length
+    ? "<ul>" + data.stash.map(s => `<li>${esc(itemName(s.item_key))} x${esc(s.qty || 1)} (${esc(s.kind)})</li>`).join("") + "</ul>"
+    : "<p>Empty.</p>";
+
+  const rating = fighterCost + gearCost + xpTotal;
+  document.getElementById("view").innerHTML = `
+    <h2>Summary</h2>
+    <p><b>${esc(w.warband_name)}</b><br>
+    Faction: ${esc(w.faction)}<br>
+    Origin: ${esc(w.origin)}<br>
+    Silver: ${esc(w.silver)}s<br>
+    Fighters: ${active.length} active (of ${data.fighters.length} on the roster)<br>
+    Holdings: ${data.holdings.length} (maximum 5)<br>
+    <b>Warband rating: ${rating}</b> (fighters ${fighterCost} + wargear ${gearCost} + XP ${xpTotal}; active fighters only; stash not counted)</p>
+    ${notes.length ? "<p>Note:</p><ul>" + [...new Set(notes)].map(n => "<li>" + esc(n) + "</li>").join("") + "</ul>" : ""}
+    <h2>Fighters</h2>${fightersHtml}
+    <h2>Holdings</h2>${holdingsHtml}
+    <h2>Stash</h2>${stashHtml}`;
+}
+
+async function loadWarband(id) {
+  const status = document.getElementById("status");
+  try { status.hidden = false; status.textContent = "Loading warband..."; show(await callScript({ action: "getWarband", id })); status.hidden = true; }
+  catch (err) { status.hidden = false; status.textContent = "Could not load the warband: " + err.message; }
+}
+
+// ---------- start ----------
+document.getElementById("pick").addEventListener("change", e => loadWarband(e.target.value));
+document.getElementById("reload").addEventListener("click", () => loadWarband(document.getElementById("pick").value));
+
+(async function () {
+  const status = document.getElementById("status");
+  if (SCRIPT_URL.startsWith("PASTE_")) { status.textContent = "Set SCRIPT_URL near the top of this file first."; return; }
+  try {
+    const [units, items, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), callScript({ action: "listWarbands" })]);
+    units.forEach(u => UNITS[u["Unit Name"]] = u);
+    items.forEach(i => { if (i["Item Key"] && !ITEMS[i["Item Key"]]) ITEMS[i["Item Key"]] = i; });
+    if (!list.length) { status.textContent = "No warbands saved yet."; return; }
+    document.getElementById("pick").innerHTML = list.map(w => `<option value="${esc(w.warband_id)}">${esc(w.warband_name)} (${esc(w.player || "?")})</option>`).join("");
+    document.getElementById("app").hidden = false;
+    await loadWarband(list[0].warband_id);
+  } catch (err) { status.textContent = "Could not load: " + err.message; }
+})();
+</script>
 </body>
 </html>
