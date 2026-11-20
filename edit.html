@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Edit my warband</title></head>
+<body>
+<p><a href="index.html">Home</a></p>
+<h1>Edit my warband</h1>
+<p>Spend silver on wargear for your fighters. Each purchase is checked and logged.</p>
+
+<p id="status">Loading...</p>
+
+<div id="app" hidden>
+<p>Warband: <select id="pick"></select></p>
+<p>Group key: <input id="groupKey" type="password" size="20"> (the shared passphrase; this browser remembers it)</p>
+<p id="message"></p>
+<div id="view"></div>
+</div>
+
+<script>
+// Paste your Apps Script web app URL (it ends in /exec) between the quotes:
+const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+// ---------- helpers ----------
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = "", inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else inQuotes = false; }
+      else cell += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); cell = "";
+      if (row.some(x => x !== "")) rows.push(row);
+      row = [];
+    } else cell += c;
+  }
+  row.push(cell);
+  if (row.some(x => x !== "")) rows.push(row);
+  const header = rows.shift().map(h => h.trim());
+  return rows.map(r => { const o = {}; header.forEach((h, i) => o[h] = (r[i] || "").trim()); return o; });
+}
+async function loadCSV(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok) throw new Error(path + " (" + res.status + ")");
+  return parseCSV(await res.text());
+}
+async function getFromScript(params) {
+  const res = await fetch(SCRIPT_URL + "?" + new URLSearchParams(params));
+  const data = await res.json();
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+async function postToScript(payload) {
+  // text/plain avoids a browser pre-check that Apps Script web apps do not answer
+  const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+  const data = await res.json();
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+const num = v => { const n = parseFloat(v); return isNaN(n) ? 0 : n; };
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function remembered(key, value) {
+  try { if (value === undefined) return localStorage.getItem(key) || ""; localStorage.setItem(key, value); } catch (e) { return ""; }
+}
+
+// ---------- state ----------
+let UNITS = {}, EQUIP = [], ITEMS = {};
+let current = null;   // the warband data from the script
+
+const itemName = key => ITEMS[key] ? ITEMS[key]["Name"] : String(key).split("|").pop();
+
+function optionsFor(unit) {
+  const code = unit ? unit["Wargear Allowed"] : "";
+  if (!code || code === "X0") return [];
+  const seen = new Set();
+  return EQUIP.filter(e => e["Code"] === code && !seen.has(e["Item Key"]) && seen.add(e["Item Key"]));
+}
+
+function render() {
+  const w = current.warband, silver = num(w.silver);
+  const fighters = current.fighters.filter(f => (f.status || "Active") === "Active");
+  const html = fighters.map(f => {
+    const u = UNITS[f.unit_name];
+    const opts = optionsFor(u);
+    const owned = f.wargear.length
+      ? "<ul>" + f.wargear.map(g => `<li>${esc(itemName(g.item_key))}</li>`).join("") + "</ul>" : "none<br>";
+    const picker = opts.length
+      ? `<select id="buy-${esc(f.fighter_id)}">` + opts.map(e => {
+          const price = num(e["Silver"]);
+          return `<option value="${esc(e["Item Key"])}"${price > silver ? " disabled" : ""}>${esc(e["Name"])} (${esc(e["Category"])}, ${price}s${e["Rare Limit"] ? ", rare " + esc(e["Rare Limit"]) : ""})${price > silver ? " - too expensive" : ""}</option>`;
+        }).join("") + `</select> <button data-fighter="${esc(f.fighter_id)}">Buy</button>`
+      : "No wargear available for this unit.";
+    return `<h3>${esc(f.fighter_name)} (${esc(f.unit_name)})</h3><p>Wargear: ${owned}${picker}</p>`;
+  }).join("") || "<p>No active fighters.</p>";
+  document.getElementById("view").innerHTML =
+    `<h2>${esc(w.warband_name)}</h2><p>Silver: ${silver}s</p>${html}`;
+}
+
+async function loadWarband(id) {
+  current = await getFromScript({ action: "getWarband", id });
+  render();
+}
+
+// ---------- events ----------
+document.getElementById("view").addEventListener("click", async e => {
+  const fid = e.target.dataset.fighter;
+  if (!fid) return;
+  const msg = document.getElementById("message");
+  const key = document.getElementById("groupKey").value;
+  if (!key) { msg.textContent = "Enter the group key first."; return; }
+  const itemKey = document.getElementById("buy-" + fid).value;
+  e.target.disabled = true; msg.textContent = "Buying...";
+  try {
+    const res = await postToScript({
+      action: "buyWargear", key: key, player_id: current.warband.player_id,
+      warband_id: current.warband.warband_id, fighter_id: fid, item_key: itemKey });
+    remembered("bdcGroupKey", key);
+    msg.textContent = `Bought ${itemName(itemKey)}. Silver left: ${res.silver}s.`;
+    await loadWarband(current.warband.warband_id);
+  } catch (err) {
+    msg.textContent = "Could not buy: " + err.message;
+    e.target.disabled = false;
+  }
+});
+document.getElementById("pick").addEventListener("change", async e => {
+  document.getElementById("message").textContent = "";
+  try { await loadWarband(e.target.value); } catch (err) { document.getElementById("message").textContent = err.message; }
+});
+
+// ---------- start ----------
+(async function () {
+  const status = document.getElementById("status");
+  if (SCRIPT_URL.startsWith("PASTE_")) { status.textContent = "Set SCRIPT_URL near the top of this file first."; return; }
+  try {
+    const [units, equip, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), getFromScript({ action: "listWarbands" })]);
+    units.forEach(u => UNITS[u["Unit Name"]] = u);
+    EQUIP = equip;
+    equip.forEach(i => { if (i["Item Key"] && !ITEMS[i["Item Key"]]) ITEMS[i["Item Key"]] = i; });
+    if (!list.length) { status.textContent = "No warbands saved yet."; return; }
+    document.getElementById("pick").innerHTML = list.map(w => `<option value="${esc(w.warband_id)}">${esc(w.warband_name)} (${esc(w.player || "?")})</option>`).join("");
+    document.getElementById("groupKey").value = remembered("bdcGroupKey");
+    status.hidden = true; document.getElementById("app").hidden = false;
+    await loadWarband(list[0].warband_id);
+  } catch (err) { status.textContent = "Could not load: " + err.message; }
+})();
+</script>
+</body>
+</html>
