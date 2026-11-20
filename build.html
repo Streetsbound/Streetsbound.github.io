@@ -34,9 +34,22 @@
 <p>Copy this to keep a record. Saving to the campaign Sheet is not built yet.</p>
 <textarea id="out" rows="24" cols="90" readonly></textarea>
 
+<h2>9. Save to the campaign</h2>
+<p id="saveNote"></p>
+<div id="saveForm">
+<p>Player: <select id="player"></select></p>
+<p>Warband name: <input id="wbName" size="30"></p>
+<p>Group key: <input id="groupKey" type="password" size="20"> (the shared passphrase; this browser remembers it)</p>
+<p><button id="saveBtn">Save warband</button></p>
+</div>
+<p id="saveResult"></p>
+
 </div>
 
 <script>
+// Paste your Apps Script web app URL (it ends in /exec) between the quotes:
+const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
 // ---------- helpers ----------
 const START_SILVER = 1000;
 const MAX_FIGHTERS = 15;
@@ -339,6 +352,64 @@ document.getElementById("fighters").addEventListener("change", e => {
   renderTotals();   // totals only, so the input keeps focus
 });
 
+// ---------- saving ----------
+function remembered(key, value) {
+  try { if (value === undefined) return localStorage.getItem(key) || ""; localStorage.setItem(key, value); } catch (e) { return ""; }
+}
+
+async function saveWarband() {
+  const out = document.getElementById("saveResult");
+  const name = document.getElementById("wbName").value.trim();
+  const key = document.getElementById("groupKey").value;
+  const player = document.getElementById("player").value;
+  const problems = computeWarnings();
+  if (problems.length) { out.textContent = "Fix the problems listed under Checks before saving."; return; }
+  if (!fighters.length) { out.textContent = "Add some fighters first."; return; }
+  if (!name) { out.textContent = "Give the warband a name."; return; }
+  if (!player) { out.textContent = "Pick the player."; return; }
+  if (!key) { out.textContent = "Enter the group key."; return; }
+  const btn = document.getElementById("saveBtn");
+  btn.disabled = true; out.textContent = "Saving...";
+  const t = computeTotals();
+  const payload = {
+    action: "createWarband", key: key, player_id: player, warband_name: name, faction: faction, origin: origin,
+    silver: t.left,
+    fighters: fighters.map(f => ({ unit_name: f.unit, fighter_name: f.name, xp: num(f.xp),
+                                    skills: f.skills.filter(x => x), wargear: f.wargear }))
+  };
+  try {
+    // text/plain avoids a browser pre-check that Apps Script web apps do not answer
+    const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    remembered("bdcGroupKey", key); remembered("bdcPlayer", player);
+    out.innerHTML = `Saved as ${esc(data.warband_id)}. <a href="warband.html">Open My warband</a>. Reload this page to start another warband.`;
+  } catch (err) {
+    out.textContent = "Could not save: " + err.message;
+    btn.disabled = false;
+  }
+}
+document.getElementById("saveBtn").addEventListener("click", saveWarband);
+
+async function setupSaveForm() {
+  const note = document.getElementById("saveNote");
+  if (SCRIPT_URL.startsWith("PASTE_")) {
+    note.textContent = "Saving is switched off: set SCRIPT_URL near the top of this file.";
+    document.getElementById("saveForm").hidden = true; return;
+  }
+  document.getElementById("groupKey").value = remembered("bdcGroupKey");
+  try {
+    const res = await fetch(SCRIPT_URL + "?action=listPlayers");
+    const players = await res.json();
+    if (players.error) throw new Error(players.error);
+    document.getElementById("player").innerHTML = players.map(p => `<option value="${esc(p.player_id)}">${esc(p.name)}</option>`).join("");
+    const mine = remembered("bdcPlayer"); if (mine) document.getElementById("player").value = mine;
+  } catch (err) {
+    note.textContent = "Could not load the player list: " + err.message;
+    document.getElementById("saveForm").hidden = true;
+  }
+}
+
 // ---------- start ----------
 (async function () {
   try {
@@ -356,7 +427,7 @@ document.getElementById("fighters").addEventListener("change", e => {
     const factions = [...new Set(UNITS.map(x => x["Faction"]))];
     document.getElementById("faction").innerHTML = factions.map(x => `<option>${esc(x)}</option>`).join("");
     faction = factions[0];
-    renderOriginPicker(); renderUnitPicker(); renderAll();
+    renderOriginPicker(); renderUnitPicker(); renderAll(); setupSaveForm();
     document.getElementById("status").hidden = true;
     document.getElementById("app").hidden = false;
   } catch (err) {
