@@ -241,9 +241,9 @@ document.getElementById("pick").addEventListener("change", async e => {
   const status = document.getElementById("status");
   if (SCRIPT_URL.startsWith("PASTE_")) { status.textContent = "Set SCRIPT_URL near the top of this file first."; return; }
   try {
-    const [units, equip, skills, spells, uspells, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/skills.csv"), loadCSV("data/spells.csv"), loadCSV("data/unit_spells.csv"), getFromScript({ action: "listWarbands" })]);
+    const [units, equip, skills, spells, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/skills.csv"), loadCSV("data/spells.csv"), getFromScript({ action: "listWarbands" })]);
     SKILLS = skills; SPELLS = spells;
-    uspells.forEach(r => UNIT_SPELLS[r["Unit Name"]] = { slots: parseInt(r["Recruit Spells"], 10) || 0, lores: r["Spell Lores"].split(";").map(x => x.trim()).filter(x => x) });
+    units.forEach(r => UNIT_SPELLS[r["Unit Name"]] = { slots: parseInt(r["Recruit Spells"], 10) || 0, lores: (r["Spell Lores"] || "").split(";").map(x => x.trim()).filter(x => x) });
     units.forEach(u => UNITS[u["Unit Name"]] = u);
     EQUIP = equip;
     equip.forEach(i => { if (i["Item Key"] && !ITEMS[i["Item Key"]]) ITEMS[i["Item Key"]] = i; });
