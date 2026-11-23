@@ -1,0 +1,13 @@
+Skill Name,Scroll Effect,Scroll Note
+Marksman,Weapon,"Ranged weapons get +3"" Range (not Flame weapons)."
+Chill Touch,Weapon,Melee weapons get +1 Critical Damage.
+Purveyor of Poisons,Weapon,Melee weapons gain Poison; a weapon that already has it improves its Rend by 1.
+Unholy Strength,Weapon,Melee weapons gain Bludgeon.
+Great Weapon Master,Weapon,Ignores the Unwieldy trait on melee weapons.
+Unshakeable,Special rule,Ignores Fear and rules that make it scatter.
+Dread Aura,Special rule,Causes Fear.
+Black Blood,Special rule,Cannot be poisoned.
+Fast Learner,Aftermath,Earns d6 bonus XP in every aftermath (Step 3).
+Explorer's Instincts,Aftermath,"If it leads a scouting party, the warband gains 1 exploration re-roll (Step 4)."
+Too Cunning to Die,Aftermath,Injury rolls for this fighter: roll twice and pick either (Step 2).
+Supernatural Healing,Aftermath,No permanent injuries; a Killed result may become missing d3 battles (Step 2).
