@@ -246,6 +246,18 @@ Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Blade,36,,3,-1,2,d3+1,Off-han
 Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Great Weapon,50,,3,-2,3,d3+2,Two-handed,,,,,Death Covens|Ogre Great Weapon
 Death Covens,D4,Zombie Ogre List,Melee Weapon,Ogre Mace,38,,3,-1,2,d3+1,"Bludgeon, Off-hand",,,,,Death Covens|Ogre Mace
 Death Covens,D4,Zombie Ogre List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Death Covens|Shield
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Death Covens|Axe
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Death Covens|Club/Mace/Hammer
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Death Covens|Dagger
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Flail,14,,3,-,1,d3,"Off-hand, Wrap",,,,,Death Covens|Flail
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Halberd,34,,3,-1,1,d3+1,"Brace, Polearm, Two-handed",,,,,Death Covens|Halberd
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Spear,16,,3,-,1,d3,"Brace, Polearm, Two-handed",,,,,Death Covens|Spear
+Death Covens,D5,Skeleton Warrior List,Melee Weapon,Sword,18,,3,-,1,d3,"Guard, Off-hand",,,,,Death Covens|Sword
+Death Covens,D5,Skeleton Warrior List,Armour,Cuirass,20,,,,,,,5+,,,Armour value 5+.,Death Covens|Cuirass
+Death Covens,D5,Skeleton Warrior List,Item,Shield,10,,,,,,,,Held Item,,"Improve this fighter's Armour value by 1, to a maximum of 2+. (For example, 6+ becomes 5+).",Death Covens|Shield
+Death Covens,D5,Skeleton Warrior List,Ranged Weapon,Long Bow,26,"28""",1,-1,d3,d6,"Heavy, Two-handed",,,,,Death Covens|Long Bow
+Death Covens,D5,Skeleton Warrior List,Ranged Weapon,Short Bow,16,"16""",1,-,1,d6,Two-handed,,,,,Death Covens|Short Bow
+Death Covens,D5,Skeleton Warrior List,Item,Ancient Banner,25,,,,,,,,Held Item,0-1,"While this fighter is on the battlefield, you can re-roll flee tests. You can re-roll Willpower tests made by friendly fighters while they are within 12"" of this fighter and this fighter is visible to them.",Death Covens|Ancient Banner
 Blighted Cloister,B1,Main List,Melee Weapon,Axe,16,,3,-1,1,d3,Off-hand,,,,,Blighted Cloister|Axe
 Blighted Cloister,B1,Main List,Melee Weapon,Club/Mace/Hammer,14,,3,-,1,d3,"Bludgeon, Off-hand",,,,,Blighted Cloister|Club/Mace/Hammer
 Blighted Cloister,B1,Main List,Melee Weapon,Dagger,10,,3,-,1,d3,Off-hand,,,,,Blighted Cloister|Dagger
