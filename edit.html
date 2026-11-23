@@ -70,7 +70,8 @@ function remembered(key, value) {
 }
 
 // ---------- state ----------
-let UNITS = {}, EQUIP = [], ITEMS = {}, SKILLS = [];
+let UNITS = {}, EQUIP = [], ITEMS = {}, SKILLS = [], SPELLS = [];
+const UNIT_SPELLS = {};   // unit name -> { slots, lores }
 let current = null;   // the warband data from the script
 
 const itemName = key => ITEMS[key] ? ITEMS[key]["Name"] : String(key).split("|").pop();
@@ -142,7 +143,19 @@ function renderRecruitSkills() {
   if (!sel || !box) return;
   const u = UNITS[sel.value];
   const slots = u ? parseInt(u["Recruit Skills"], 10) || 0 : 0;
-  if (!slots) { box.innerHTML = ""; return; }
+  // signature spells for Wizards and Priests
+  const us = u ? UNIT_SPELLS[u["Unit Name"]] : null;
+  const sslots = us ? us.slots : 0;
+  let spellHtml = "";
+  if (sslots) {
+    const sopts = SPELLS.filter(sp => us.lores.includes(sp["Spell Lore"]));
+    spellHtml = " Signature spells to pick:";
+    for (let i = 0; i < sslots; i++) {
+      spellHtml += ` <select id="rec-spell-${i}"><option value="">(choose a spell)</option>` +
+        sopts.map(sp => `<option value="${esc(sp["Spell Name"])}">${esc(sp["Spell Name"])} (${esc(sp["Spell Type"])}, ${esc(sp["Casting Value"])})</option>`).join("") + "</select>";
+    }
+  }
+  if (!slots) { box.innerHTML = spellHtml; return; }
   const held = new Set(current.fighters.filter(f => (f.status || "Active") === "Active").flatMap(f => f.skills.map(x => x.skill_name)));
   const seen = new Set();
   const opts = SKILLS.filter(k => k["Code"] === u["Skills"] && !seen.has(k["Skill Name"]) && seen.add(k["Skill Name"]));
@@ -151,7 +164,7 @@ function renderRecruitSkills() {
     html += ` <select id="rec-skill-${i}"><option value="">(choose a skill)</option>` +
       opts.map(k => `<option value="${esc(k["Skill Name"])}"${held.has(k["Skill Name"]) ? " disabled" : ""}>${esc(k["Skill Name"])} (${esc(k["Skill Table"])})</option>`).join("") + "</select>";
   }
-  box.innerHTML = html;
+  box.innerHTML = html + spellHtml;
 }
 
 async function loadWarband(id) {
@@ -203,9 +216,13 @@ document.getElementById("view").addEventListener("click", e => {
     const u = UNITS[unitName], slots = u ? parseInt(u["Recruit Skills"], 10) || 0 : 0;
     const skills = [];
     for (let i = 0; i < slots; i++) skills.push(document.getElementById("rec-skill-" + i).value);
+    const us = UNIT_SPELLS[unitName], spells = [];
+    for (let i = 0; i < (us ? us.slots : 0); i++) spells.push(document.getElementById("rec-spell-" + i).value);
     if (!name) { document.getElementById("message").textContent = "Give the new fighter a name."; return; }
     if (skills.some(x => !x)) { document.getElementById("message").textContent = "Pick the skill(s) for this fighter."; return; }
-    doAction(e.target, { action: "recruitFighter", unit_name: unitName, fighter_name: name, skills: skills },
+    if (spells.some(x => !x)) { document.getElementById("message").textContent = "Pick the signature spell(s) for this fighter."; return; }
+    if (new Set(spells).size !== spells.length) { document.getElementById("message").textContent = "Pick different spells."; return; }
+    doAction(e.target, { action: "recruitFighter", unit_name: unitName, fighter_name: name, skills: skills, spells: spells },
       res => `Recruited ${name} (${unitName}) with ${res.xp} starting XP. Silver left: ${res.silver}s.`);
   } else if (act === "sell") {
     const s = current.stash[parseInt(e.target.dataset.i, 10)];
@@ -224,8 +241,9 @@ document.getElementById("pick").addEventListener("change", async e => {
   const status = document.getElementById("status");
   if (SCRIPT_URL.startsWith("PASTE_")) { status.textContent = "Set SCRIPT_URL near the top of this file first."; return; }
   try {
-    const [units, equip, skills, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/skills.csv"), getFromScript({ action: "listWarbands" })]);
-    SKILLS = skills;
+    const [units, equip, skills, spells, uspells, list] = await Promise.all([loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/skills.csv"), loadCSV("data/spells.csv"), loadCSV("data/unit_spells.csv"), getFromScript({ action: "listWarbands" })]);
+    SKILLS = skills; SPELLS = spells;
+    uspells.forEach(r => UNIT_SPELLS[r["Unit Name"]] = { slots: parseInt(r["Recruit Spells"], 10) || 0, lores: r["Spell Lores"].split(";").map(x => x.trim()).filter(x => x) });
     units.forEach(u => UNITS[u["Unit Name"]] = u);
     EQUIP = equip;
     equip.forEach(i => { if (i["Item Key"] && !ITEMS[i["Item Key"]]) ITEMS[i["Item Key"]] = i; });
@@ -233,7 +251,10 @@ document.getElementById("pick").addEventListener("change", async e => {
     document.getElementById("pick").innerHTML = list.map(w => `<option value="${esc(w.warband_id)}">${esc(w.warband_name)} (${esc(w.player || "?")})</option>`).join("");
     document.getElementById("groupKey").value = remembered("bdcGroupKey");
     status.hidden = true; document.getElementById("app").hidden = false;
-    await loadWarband(list[0].warband_id);
+    const want = new URLSearchParams(location.search).get("id");
+    const start = list.some(w => w.warband_id === want) ? want : list[0].warband_id;
+    document.getElementById("pick").value = start;
+    await loadWarband(start);
   } catch (err) { status.textContent = "Could not load: " + err.message; }
 })();
 </script>
