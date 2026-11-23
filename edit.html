@@ -16,10 +16,9 @@
 </div>
 
 <script>
-// Paste your Apps Script web app URL (it ends in /exec) between the quotes:
+// PASTE THE APPSCRIPT HERE
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwI6-VzhDRUPY6lNG6F7Xf24Nu3MGZWgi3MrWIIraKbu2jb-YZWaKnKmz1fxZ5ntFCY/exec";
 
-// GROUP DECISION: must match SELL_ROUNDING in the script ("down" or "up")
 const SELL_ROUNDING = "down";
 
 // ---------- helpers ----------
@@ -57,7 +56,6 @@ async function getFromScript(params) {
   return data;
 }
 async function postToScript(payload) {
-  // text/plain avoids a browser pre-check that Apps Script web apps do not answer
   const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
   const data = await res.json();
   if (data && data.error) throw new Error(data.error);
@@ -137,7 +135,7 @@ function render() {
   renderRecruitSkills();
 }
 
-// skill dropdowns for the unit chosen in the recruit form
+// skill dropdowns
 function renderRecruitSkills() {
   const sel = document.getElementById("rec-unit"), box = document.getElementById("rec-skills");
   if (!sel || !box) return;
