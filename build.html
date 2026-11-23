@@ -59,7 +59,7 @@ function parseCSV(text) {
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
     if (inQuotes) {
-      if (c === '"') {https://script.google.com/macros/s/AKfycbwI6-VzhDRUPY6lNG6F7Xf24Nu3MGZWgi3MrWIIraKbu2jb-YZWaKnKmz1fxZ5ntFCY/exec
+      if (c === '"') {
         if (text[i + 1] === '"') { cell += '"'; i++; }
         else inQuotes = false;
       } else cell += c;
@@ -434,12 +434,12 @@ async function setupSaveForm() {
 // ---------- start ----------
 (async function () {
   try {
-    const [u, e, o, sk, sp, us] = await Promise.all([
+    const [u, e, o, sk, sp] = await Promise.all([
       loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/origins.csv"),
-      loadCSV("data/skills.csv"), loadCSV("data/spells.csv"), loadCSV("data/unit_spells.csv")]);
+      loadCSV("data/skills.csv"), loadCSV("data/spells.csv")]);
     ORIGINS = o; SKILLS = sk; SPELLS = sp;
-    us.forEach(r => { SPELL_SLOTS[r["Unit Name"]] = parseInt(r["Recruit Spells"], 10) || 0;
-                      SPELL_LORES[r["Unit Name"]] = r["Spell Lores"].split(";").map(x => x.trim()).filter(x => x); });
+    u.forEach(r => { SPELL_SLOTS[r["Unit Name"]] = parseInt(r["Recruit Spells"], 10) || 0;
+                     SPELL_LORES[r["Unit Name"]] = (r["Spell Lores"] || "").split(";").map(x => x.trim()).filter(x => x); });
     u.forEach(r => RECRUIT[r["Unit Name"]] = parseInt(r["Recruit Skills"], 10) || 0);
     UNITS = u.map(r => Object.assign({ Name: r["Unit Name"] }, r));
     EQUIP = e;
