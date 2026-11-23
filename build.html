@@ -24,14 +24,14 @@
 <h2>Budget and rating</h2>
 <div id="summary"></div>
 
-<h2>7. Checks</h2>
+<h2>Checks</h2>
 <ul id="warnings"></ul>
 
-<h2>8. Roster as text</h2>
+<h2>Roster as text</h2>
 <p>Copy this to keep a record. Saving to the campaign Sheet is not built yet.</p>
 <textarea id="out" rows="24" cols="90" readonly></textarea>
 
-<h2>9. Save to the campaign</h2>
+<h2>Save to the campaign</h2>
 <p id="saveNote"></p>
 <div id="saveForm">
 <p>Player: <select id="player"></select></p>
@@ -59,7 +59,7 @@ function parseCSV(text) {
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
     if (inQuotes) {
-      if (c === '"') {
+      if (c === '"') {https://script.google.com/macros/s/AKfycbwI6-VzhDRUPY6lNG6F7Xf24Nu3MGZWgi3MrWIIraKbu2jb-YZWaKnKmz1fxZ5ntFCY/exec
         if (text[i + 1] === '"') { cell += '"'; i++; }
         else inQuotes = false;
       } else cell += c;
@@ -110,7 +110,8 @@ function esc(s) {
 }
 
 // ---------- state ----------
-let UNITS = [], EQUIP = [], ORIGINS = [], SKILLS = [];
+let UNITS = [], EQUIP = [], ORIGINS = [], SKILLS = [], SPELLS = [];
+const SPELL_SLOTS = {}, SPELL_LORES = {};   // unit name -> signature spells picked at recruitment / lores it knows
 const RECRUIT = {};   // unit name -> number of skills picked at recruitment
 let faction = "", origin = "";
 let fighters = [];   // { id, unit, name, xp, wargear: [itemKey, ...] }
@@ -122,6 +123,9 @@ const itemByKey = {};    // Item Key -> first equipment row
 
 const originRow = () => ORIGINS.find(o => o["Faction"] === faction && o["Origin"] === origin);
 const skillSlots = unitName => RECRUIT[unitName] || 0;
+const spellSlots = unitName => SPELL_SLOTS[unitName] || 0;
+// spells a unit can pick from: every spell in the lores it knows
+const spellOptions = unitName => SPELLS.filter(sp => (SPELL_LORES[unitName] || []).includes(sp["Spell Lore"]));
 
 // Effective unit limit: the origin can override the printed limit. null = no limit.
 function unitMax(name) {
@@ -211,13 +215,27 @@ function renderFighters() {
           "</select>";
       }
     }
+    let spellHtml = "";
+    const sslots = spellSlots(u["Unit Name"]);
+    if (sslots) {
+      const sopts = spellOptions(u["Unit Name"]);
+      spellHtml = "<br>Signature spells picked at recruitment:";
+      for (let i = 0; i < sslots; i++) {
+        const taken = new Set(f.spells.filter((x, j) => x && j !== i));
+        spellHtml += ` <select data-act="setspell" data-id="${f.id}" data-i="${i}"><option value="">(choose a spell)</option>` +
+          sopts.map(sp => `<option value="${esc(sp["Spell Name"])}"${f.spells[i] === sp["Spell Name"] ? " selected" : ""}${taken.has(sp["Spell Name"]) ? " disabled" : ""}>${esc(sp["Spell Name"])} (${esc(sp["Spell Type"])}, ${esc(sp["Casting Value"])})</option>`).join("") +
+          "</select>";
+      }
+    } else if ((SPELL_LORES[u["Unit Name"]] || []).length) {
+      spellHtml = "<br>Knows: " + esc(SPELL_LORES[u["Unit Name"]].join(", ")) + " (no signature spells; prepares one random spell per lore each battle)";
+    }
     const fixed = u["Fixed Weapon / Included Gear"] ? `<br>Included: ${esc(u["Fixed Weapon / Included Gear"])}` : "";
     return `<p><b>${esc(u["Unit Name"])}</b> (${esc(u["Type"])}) - cost ${unitCost(f)}s
       <button data-act="delfighter" data-id="${f.id}">Remove fighter</button><br>
       Name: <input id="nm-${f.id}" value="${esc(f.name)}" data-act="rename" data-id="${f.id}">
       Starting XP: <input type="number" min="0" style="width:4em" value="${f.xp}" data-act="setxp" data-id="${f.id}">
       Stats: Move ${esc(u["Move"])}, Blade ${esc(u["Blade"])}, Bow ${esc(u["Bow"])}, Armor ${esc(u["Armor"])},
-      Initiative ${esc(u["Initiative"])}, Willpower ${esc(u["Willpower"])}, Life ${esc(u["Life"])}${fixed}${skillHtml}<br>
+      Initiative ${esc(u["Initiative"])}, Willpower ${esc(u["Willpower"])}, Life ${esc(u["Life"])}${fixed}${skillHtml}${spellHtml}<br>
       Wargear: ${picker}${owned}</p>`;
   }).join("");
 }
@@ -265,6 +283,10 @@ function computeWarnings() {
     const missing = skillSlots(f.unit) - f.skills.filter(x => x).length;
     if (missing > 0) w.push(`${f.name}: ${missing} skill(s) still to pick.`);
   });
+  fighters.forEach(f => {
+    const missing = spellSlots(f.unit) - f.spells.filter(x => x).length;
+    if (missing > 0) w.push(`${f.name}: ${missing} signature spell(s) still to pick.`);
+  });
   const all = fighters.flatMap(f => f.skills.filter(x => x));
   [...new Set(all.filter((x, i) => all.indexOf(x) !== i))].forEach(x => w.push(`${x}: given to more than one fighter.`));
   if (t.left < 0) w.push(`Over budget by ${-t.left} silver.`);
@@ -279,6 +301,7 @@ function rosterText() {
     const u = unitByName(f.unit);
     lines.push(`${f.name} - ${u["Unit Name"]} (${u["Type"]}), cost ${unitCost(f)}s, starting XP ${f.xp}`);
     f.skills.filter(x => x).forEach(x => lines.push(`    Skill: ${x}`));
+    f.spells.filter(x => x).forEach(x => lines.push(`    Signature spell: ${x}`));
     f.wargear.forEach(k => lines.push(`    ${itemByKey[k]["Name"]} (${num(itemByKey[k]["Silver"])}s)`));
     if (u["Fixed Weapon / Included Gear"]) lines.push(`    Included: ${u["Fixed Weapon / Included Gear"]}`);
   });
@@ -324,7 +347,7 @@ document.getElementById("addUnit").addEventListener("click", () => {
   const u = UNITS.find(x => x["Unit Name"] === name);
   const n = fighters.filter(f => f.unit === name).length + 1;
   fighters.push({ id: nextId++, unit: name, name: name + " " + n, xp: rollStartingXP(u["Starting XP"]),
-                  wargear: [], skills: Array(skillSlots(name)).fill("") });
+                  wargear: [], skills: Array(skillSlots(name)).fill(""), spells: Array(spellSlots(name)).fill("") });
   renderAll();
 });
 
@@ -345,6 +368,7 @@ document.getElementById("fighters").addEventListener("change", e => {
   if (act === "rename") f.name = e.target.value;
   else if (act === "setxp") f.xp = num(e.target.value);
   else if (act === "setskill") { f.skills[parseInt(e.target.dataset.i, 10)] = e.target.value; renderAll(); return; }
+  else if (act === "setspell") { f.spells[parseInt(e.target.dataset.i, 10)] = e.target.value; renderAll(); return; }
   else return;
   renderTotals();   // totals only, so the input keeps focus
 });
@@ -372,7 +396,7 @@ async function saveWarband() {
     action: "createWarband", key: key, player_id: player, warband_name: name, faction: faction, origin: origin,
     silver: t.left,
     fighters: fighters.map(f => ({ unit_name: f.unit, fighter_name: f.name, xp: num(f.xp),
-                                    skills: f.skills.filter(x => x), wargear: f.wargear }))
+                                    skills: f.skills.filter(x => x), spells: f.spells.filter(x => x), wargear: f.wargear }))
   };
   try {
     // text/plain avoids a browser pre-check that Apps Script web apps do not answer
@@ -410,10 +434,12 @@ async function setupSaveForm() {
 // ---------- start ----------
 (async function () {
   try {
-    const [u, e, o, sk] = await Promise.all([
+    const [u, e, o, sk, sp, us] = await Promise.all([
       loadCSV("data/units.csv"), loadCSV("data/equipment.csv"), loadCSV("data/origins.csv"),
-      loadCSV("data/skills.csv")]);
-    ORIGINS = o; SKILLS = sk;
+      loadCSV("data/skills.csv"), loadCSV("data/spells.csv"), loadCSV("data/unit_spells.csv")]);
+    ORIGINS = o; SKILLS = sk; SPELLS = sp;
+    us.forEach(r => { SPELL_SLOTS[r["Unit Name"]] = parseInt(r["Recruit Spells"], 10) || 0;
+                      SPELL_LORES[r["Unit Name"]] = r["Spell Lores"].split(";").map(x => x.trim()).filter(x => x); });
     u.forEach(r => RECRUIT[r["Unit Name"]] = parseInt(r["Recruit Skills"], 10) || 0);
     UNITS = u.map(r => Object.assign({ Name: r["Unit Name"] }, r));
     EQUIP = e;
